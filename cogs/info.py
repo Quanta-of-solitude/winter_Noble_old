@@ -148,6 +148,7 @@ class Information:
         em.add_field(name='NickName:', value=user.nick, inline = False)
         em.add_field(name='Member No:',value=str(member_number), inline = False)
         em.add_field(name='Status:', value=user.status, inline = False)
+	em.add_field(name='Playing:', value=user.game, inline = False)
         em.add_field(name='Account Created:', value= created_at, inline = False)
         em.add_field(name='Join Date:', value=joined_at, inline = False)
         em.add_field(name='Last Seen on this channel:', value= formatted_seen, inline = False)
