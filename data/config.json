@@ -1,0 +1,10 @@
+{
+    "PREFIX": ["w!","$","win", "Win"],
+    "TOKEN": "your_token_here",
+    "api_link": "api_link_here",
+    "char_link": "link_here",
+    "item_link": "item_link_here",
+    "news_api": "api_link_here",
+    "cleverbot_key": "api_key_here",
+    "s_link": "link_here"
+}
