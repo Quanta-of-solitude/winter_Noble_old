@@ -213,7 +213,7 @@ class Information:
     async def invite(self,ctx):
         '''invite the bot'''
         em = discord.Embed(title = "Click here to get me :D", url = "https://discordapp.com/oauth2/authorize?client_id=385681784614027265&scope=bot&permissions=305196166")
-        em.set_author(name = "Thank You for using", icon_url = ctx.message.author.avatar_url)
+        em.set_author(name = "Thank You for using", icon_url = self.bot.user.avatar_url)
         await ctx.send(embed = em)
 
     @commands.command()
@@ -222,13 +222,13 @@ class Information:
         help_cmd = """
             **__Music Commands:__**
         ```
-        1. m!summon: before using.
-        2. m!play [song]: play the song.
-        3. m!repeat: toggle repeat modes.
-        4. m!queue: songs in queue.
-        5. m!volume [value]: set volume.
-        6. m!promote [number]: put song to top.
-        7. m!disconnect [always do.]
+1. m!summon: before using.
+2. m!play [song]: play the song.
+3. m!repeat: toggle repeat modes.
+4. m!queue: songs in queue.
+5. m!volume [value]: set volume.
+6. m!promote [number]: put song to top.
+7. m!disconnect [always do.]
         ```"""
         await ctx.send(help_cmd)
 def setup(bot):
