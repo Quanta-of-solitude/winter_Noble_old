@@ -14,5 +14,5 @@ spice_api
 cleverwrap
 git+https://github.com/roundar/myjson
 wikipedia
-numpy
-matplotlib
+numpy==1.6.2
+matplotlib==1.1.1
