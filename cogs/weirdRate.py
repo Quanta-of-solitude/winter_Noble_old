@@ -7,7 +7,10 @@ import discord
 import json
 from discord.ext import commands
 from cleverwrap import CleverWrap
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
+matplotlib.use('Agg')
 from matplotlib import style
 matplotlib.use('Agg')
 import random
