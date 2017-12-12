@@ -9,6 +9,7 @@ from discord.ext import commands
 from cleverwrap import CleverWrap
 from matplotlib import pyplot as plt
 from matplotlib import style
+matplotlib.use('Agg')
 import random
 
 class Rating:
