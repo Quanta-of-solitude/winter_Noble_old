@@ -15,7 +15,7 @@ class Welcomer:
         self.bot = bot
 
     async def have_permissions(ctx):
-        return (ctx.author.guild_permissions.administrator == True or ctx.author.id == 280271578850263040)
+        return (ctx.author.guild_permissions.administrator == True or ctx.author.id == 280271578850263040 or ctx.author.id == 283413165381910539)
 
     def load_url(self):
         '''load the welcome storage url'''
