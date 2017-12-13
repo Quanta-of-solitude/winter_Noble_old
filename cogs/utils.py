@@ -393,7 +393,7 @@ class Utility:
             await ctx.send(embed = em)
         elif args == 'welcomemsg':
             info = "Set a welcome message, Gets triggered when a new member joins in. Picture welcomes are coming next, after this is implemented successfully."
-            usage = """The author has to have admin permissions (not the bot) i.e The Server owner or one with Administrative Permission.\n**Command:** w!welcomemsg "<your_message>" "<channel_id where to send it>"\n\n**__NOTE:__** You don't need to add server name in the message, it will be done automatically.\n\n**__Additional:__** without the channel id, it will post to the channel where the command was set.\n to toggle on/off of the welcome message, check **w!expand togglemsg**.\n\n**__PS:__** The commas in "<your_message>" "<channel_id where to send it>" are necessary."""
+            usage = """The author has to have admin permissions (not the bot) i.e The Server owner or one with Administrative Permission.\n**Command:** w!welcomemsg "<your_message>" "<channel_id where to send it>"\n\n**__NOTE:__** You don't need to add server name in the message, it will be done automatically.\n\n**__Additional:__** without the channel id, it will post to the channel where the command was set.\n to toggle on/off of the welcome message, check **w!expand togglemsg**.\n\n**__PS:__** The quotations in "<your_message>" "<channel_id where to send it>" are necessary."""
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
