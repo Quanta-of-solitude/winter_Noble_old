@@ -6,5 +6,7 @@
     "item_link": "item_link_here",
     "news_api": "api_link_here",
     "cleverbot_key": "api_key_here",
-    "s_link": "link_here"
+    "s_link": "link_here",
+    "sw_link": "link_here",
+    "toggle_link": "link_here"
 }
