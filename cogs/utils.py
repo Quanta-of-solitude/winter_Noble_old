@@ -333,7 +333,7 @@ class Utility:
             await ctx.send(embed = em)
         elif args == 'cmdadd':
             info = "Adding a custom command!"
-            usage = """w!cmdadd "Key" "Value".\n\n**__For Example:__** w!cmdadd "Java" "A Programming Language."\n\nBesides texts, links can be used too, but not both together for the moment.\n\n **__PS:__** The Commas are necessary and some image links might show up your image."""
+            usage = """w!cmdadd "Key" "Value".\n\n**__For Example:__** w!cmdadd "Java" "A Programming Language."\n\nBesides texts, links can be used too, but not both together for the moment.\n\n **__PS:__** The quotations are necessary and some image links might show up your image."""
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
