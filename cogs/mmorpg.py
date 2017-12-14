@@ -333,7 +333,7 @@ OZONE.dom.onDomReady(function(){
                                 break
 
         except Exception as e:
-        #    print(e)
+            print(e)
             await ctx.send("`Error: None Found!`")
 
 
