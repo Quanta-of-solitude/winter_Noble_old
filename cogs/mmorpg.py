@@ -296,7 +296,7 @@ OZONE.dom.onDomReady(function(){
             print(args)
             args = args.lower()
             args = args.replace(' ', '+')
-            url = os.environ.get("BADGE_AQW")
+            url = "{}".format(os.environ.get("BADGE_AQW"))
             url = url+args
             r = requests.get(url)
             badges = []
