@@ -292,7 +292,7 @@ OZONE.dom.onDomReady(function(){
             if args == None:
                 await ctx.send("`Error: No Name Provided!`")
                 return
-            #searched = args
+            searched = args
             print(args)
             args = args.lower()
             args = args.replace(' ', '+')
@@ -333,7 +333,7 @@ OZONE.dom.onDomReady(function(){
                                 break
 
         except Exception as e:
-            print(e)
+            #print(e)
             await ctx.send("`Error: None Found!`")
 
 
