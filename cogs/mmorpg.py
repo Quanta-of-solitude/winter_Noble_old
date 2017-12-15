@@ -302,9 +302,8 @@ OZONE.dom.onDomReady(function(){
                 print(args)
                 args = args.lower()
                 args = args.replace(' ', '+')
-                #url = os.environ.get("BADGE_AQW")
-                #url = url+args
-                url = "http://www.aq.com/character.asp?id=%s"%(args)
+                url = "{}".format(os.environ.get("BADGE_AQW"))
+                url = url+args
                 r = requests.get(url)
                 badges = []
                 soup = BeautifulSoup(r.content, 'lxml')
@@ -362,9 +361,8 @@ OZONE.dom.onDomReady(function(){
                 return
             args = args.lower()
             args = args.replace(' ', '+')
-            #url = os.environ.get("BADGE_AQW")
-            #url = url+args
-            url = "http://www.aq.com/character.asp?id=%s"%(args)
+            url = "{}".format(os.environ.get("BADGE_AQW"))
+            url = url+args
             r = requests.get(url)
             soup = BeautifulSoup(r.content, 'lxml')
             the_script = []
