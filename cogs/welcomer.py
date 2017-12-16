@@ -282,7 +282,7 @@ class Welcomer:
             msg = "**Thank you for adding me! :slight_smile:\nI am winter-song, and if by mistake I wrote this on an unwanted channel, please forgive me**:sweat_smile:\nTo get started, use **w!help** and you will see all my commands! :dancer:"
             await channel.send(msg)
         except Exception as e:
-            pass
+            print(e)
 
 
 
