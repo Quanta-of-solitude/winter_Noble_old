@@ -457,7 +457,6 @@ OZONE.dom.onDomReady(function(){
             new_text = args.replace(' ','-')
             new_text = new_text.lower()
             link = "{}".format(os.environ.get("item_aqw"))
-            #link = "http://aqwwiki.wikidot.com/{}".format(new_text)
             link = link+new_text
             r = requests.get(link)
             soup = BeautifulSoup(r.content, 'lxml')
@@ -478,7 +477,7 @@ OZONE.dom.onDomReady(function(){
                 item_embed.set_author(name = "Item Info: |%s|"%(args))
                 item_embed.set_image(url = data)
                 item_embed.color=discord.Colour.green()
-                item_embed.set_footer(text = "|Winter-Song| requested by {}".format(ctx.message.author.name), icon_url = ctx.message.author.avatar_url)
+                item_embed.set_footer(text = "|Winter-Song| requested by {}".format(ctx.message.author.name), icon_url = self.bot.user.avatar_url)
                 await ctx.send(embed = item_embed)
             except Exception as e:
                 item_embed = discord.Embed(description = "-NONE-\n**Possible Causes:**\n1. Name Provided isn't an item: weapon, armor etc but a class.\n2. Item doesn't exist.\n3. Item name is incorrect.\n4. I messed up!")
