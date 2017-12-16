@@ -264,7 +264,7 @@ class Utility:
             await ctx.send(embed = em)
         elif args == 'aqwitem':
             info = "Gives details about an aqw item"
-            usage = "w!aqwitem [item]. Eg: w!aq3ditem Amethyst Axe.\n\n**The names must be correctly used in order for this to work.**"
+            usage = "w!aqwitem [item]. Eg: w!aqwitem Amethyst Axe.\n\n**The names must be correctly used in order for this to work.**"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
