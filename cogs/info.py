@@ -212,9 +212,9 @@ class Information:
     @commands.command()
     async def invite(self,ctx):
         '''invite the bot'''
-        em = discord.Embed(title = "Click here to get me :D", url = "https://discordapp.com/oauth2/authorize?client_id=385681784614027265&scope=bot&permissions=305196166")
-        em.set_author(name = "Thank You for using", icon_url = self.bot.user.avatar_url)
-        await ctx.send(embed = em)
+        link = "https://discordapp.com/oauth2/authorize?client_id=385681784614027265&scope=bot&permissions=305196166"
+        #em.set_author(name = "Thank You for using", icon_url = self.bot.user.avatar_url)
+        await ctx.send("**Get me From:**\n"+link)
 
     @commands.command()
     async def music(self,ctx):
