@@ -93,7 +93,7 @@ class Utility:
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
         elif args == 'server':
-            info = "Gives user details."
+            info = "Gives server details."
             usage = "w!server"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
