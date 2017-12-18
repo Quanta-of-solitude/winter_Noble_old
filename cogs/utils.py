@@ -84,7 +84,7 @@ class Utility:
         args = args.lower()
         if args == 'user':
             info = "Gives user details."
-            usage = "w!user or ;user @mention. \n Example: w!user @someone"
+            usage = "w!user or w!user @mention. \n Example: w!user @someone"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
