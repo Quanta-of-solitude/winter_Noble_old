@@ -279,7 +279,7 @@ class Welcomer:
         try:
             server = guild
             channel = server.text_channels[0]
-            msg = "**Thank you for adding me! :slight_smile:\nI am winter-song, and if by mistake I wrote this on an unwanted channel, please forgive me**:sweat_smile:\nTo get started, use **w!help** and you will see all my commands! :dancer:"
+            msg = "**Thank you for adding me! :slight_smile:\nI am winter-song, and if by mistake I wrote this on an unwanted channel, please forgive me**:sweat_smile:\nTo get started, use **w!help** and you will see all my commands! :dancer:\nYou can also check the website: https://winter-song-web.herokuapp.com/ I hope it's **working** :smile:"
             await channel.send(msg)
         except Exception as e:
             print(e)
