@@ -129,10 +129,9 @@ class Gen:
 2. w!slap []: Slap an user, or anything.  \n
 3. w!hug []: Hug an user, or anything.  \n
 4. w!gif []: Search a gif!\n
-5. $winter []: have a chat with the bot.\n
-6. w!eball []: Ask 8ball something.\n
-7. w!say []: Speak through the bot.\n
-8. winter [text]: Talk with the bot!
+5. w!eball []: Ask 8ball something.\n
+6. w!say []: Speak through the bot.\n
+7. winter [text]: Talk with the bot!
         ```
         """
         await ctx.send(help_cmd)
