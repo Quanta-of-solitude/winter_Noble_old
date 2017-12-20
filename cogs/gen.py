@@ -143,7 +143,7 @@ class Gen:
                 await ctx.send("`Error: You didn't provide any search terms ._.`")
                 return
             new_text = args.replace(' ','+')
-            link = "http://api.giphy.com/v1/gifs/search?&api_key={}&q={}".format("{}".format(giphy_key), new_text)
+            link = "http://api.giphy.com/v1/gifs/search?&api_key={}&q={}".format("{}".format(os.environ.get("giphy_key")), new_text)
             random_entry = randint(1, 20)
             em = discord.Embed()
             async def fetch(session, url):
