@@ -119,8 +119,8 @@ class Welcomer:
             data4["{}".format(server.id)]["link"] = "https://cdn.discordapp.com/attachments/384512083552894979/395207826684772374/bg.jpg"
             url = myjson.store(json.dumps(data),update=url)
             url1 = myjson.store(json.dumps(data1),update=url1)
-            url3 = myjson.store(json.dumps(data1),update=url3)
-            url4 = myjson.store(json.dumps(data1),update=url4)
+            url3 = myjson.store(json.dumps(data3),update=url3)
+            url4 = myjson.store(json.dumps(data4),update=url4)
             em = discord.Embed(description = "Welcome message has been set and type is text(default)")
             em.colour = discord.Colour.green()
             await ctx.send(embed = em)
@@ -144,8 +144,8 @@ class Welcomer:
                 data4["{}".format(server.id)]["link"] = "https://cdn.discordapp.com/attachments/384512083552894979/395207826684772374/bg.jpg"
                 url = myjson.store(json.dumps(data),update=url)
                 url1 = myjson.store(json.dumps(data1),update=url1)
-                url3 = myjson.store(json.dumps(data1),update=url3)
-                url4 = myjson.store(json.dumps(data1),update=url4)
+                url3 = myjson.store(json.dumps(data3),update=url3)
+                url4 = myjson.store(json.dumps(data4),update=url4)
                 em = discord.Embed(description = "Welcome message has been set and type is text(default)")
                 em.colour = discord.Colour.green()
                 await ctx.send(embed = em)
