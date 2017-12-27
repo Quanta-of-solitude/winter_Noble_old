@@ -82,7 +82,7 @@ class Datas:
         await ctx.send("```js\n"+data+"```")
     @commands.command()
     @commands.check(have_permissions)
-    async def datawelcome(self,ctx):
+    async def datacmds(self,ctx):
         '''cmd datas'''
         url = "{}".format(os.environ.get("s_link"))
         data = myjson.get(url)
