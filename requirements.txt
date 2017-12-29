@@ -16,3 +16,4 @@ git+https://github.com/roundar/myjson
 wikipedia
 numpy
 matplotlib
+flickrapi
