@@ -72,7 +72,7 @@ class NewBot(commands.Bot):
             print(e)
 
     async def on_connect(self):
-        print('-------------\n'+ 'Winter-Song Logged in!')
+        print('-------------\n'+ '{}'.format(self.user.name))
 
     async def on_ready(self):
         '''SET THE UPTIME'''
