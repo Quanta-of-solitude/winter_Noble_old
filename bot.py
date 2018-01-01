@@ -6,6 +6,7 @@ Winter-Song!
 '''
 import os
 import discord
+import asyncio
 from discord.ext import commands
 from ext.context import CustomContext
 import psutil
