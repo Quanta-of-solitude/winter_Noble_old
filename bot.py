@@ -81,7 +81,7 @@ class NewBot(commands.Bot):
     async def on_ready(self):
         '''SET THE UPTIME'''
         self.uptime = datetime.datetime.utcnow()
-        await self.user.edit(username = "Winter-Song")
+        #await self.user.edit(username = "Winter-Song")
         await self.change_presence(game = discord.Game(name="w!help",type =0))
 
     async def on_command(self, ctx):
