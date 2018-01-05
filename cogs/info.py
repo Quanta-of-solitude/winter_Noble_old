@@ -195,8 +195,8 @@ class Information:
         '''invite the bot'''
         await ctx.trigger_typing()
         em = "<https://discordapp.com/oauth2/authorize?client_id=385681784614027265&scope=bot&permissions=305196166>"
-        #em1 = "https://discord.gg/k3PKut6"
-        await ctx.send("Get me from:\n"+em+"\n\nIf you want to suggest something/or need help join:\n NONE(setting up atm)")
+        em1 = "https://discord.gg/k3PKut6"
+        await ctx.send("Get me from:\n"+em+"\n\nIf you want to suggest something/or need help join:\n"+em1)
 
     @commands.command()
     async def music(self,ctx):
