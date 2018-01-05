@@ -76,12 +76,12 @@ class NewBot(commands.Bot):
             print(e)
 
     async def on_connect(self):
-        print('-------------\n'+ 'Test-Bot Logged in!')
+        print('-------------\n'+ 'Fake Winter Logged in!')
 
     async def on_ready(self):
         '''SET THE UPTIME'''
         self.uptime = datetime.datetime.utcnow()
-        await self.user.edit(username = "Fake Winter-Song")
+        await self.user.edit(username = "Winter-Song")
         await self.change_presence(game = discord.Game(name="w!help",type =0))
 
     async def on_command(self, ctx):
