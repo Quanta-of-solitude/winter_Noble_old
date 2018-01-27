@@ -22,3 +22,7 @@ python3 bot.py
 do the usual (if you know), then under config vars add **KEYs and deploy with worker enabled.**
 
 *Thank You.*
+
+<a href="https://discordbots.org/bot/385681784614027265">
+  <img src="https://discordbots.org/api/widget/385681784614027265.svg" />
+</a>
