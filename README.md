@@ -1,5 +1,10 @@
 # Winter-Song
 
+<a href="https://discordbots.org/bot/385681784614027265">
+  <img src="https://discordbots.org/api/widget/385681784614027265.svg" />
+</a>
+
+
 Winter-Song is an ongoing bot, its base is dervied(because I was lazy).
 
 It's an experimental bot, developed after another bot.
@@ -23,6 +28,4 @@ do the usual (if you know), then under config vars add **KEYs and deploy with wo
 
 *Thank You.*
 
-<a href="https://discordbots.org/bot/385681784614027265">
-  <img src="https://discordbots.org/api/widget/385681784614027265.svg" />
-</a>
+
