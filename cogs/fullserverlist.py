@@ -41,7 +41,7 @@ class ServerList():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases=['fullserver', 'fsvrlist', 'flists'])
     async def fullserverlist(self,ctx):
         try:
             if ctx.message.author.id == 280271578850263040:
