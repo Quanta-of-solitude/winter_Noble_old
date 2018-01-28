@@ -36,7 +36,7 @@ class ServerList():
             server['name'] = ''.join(filter(lambda x: x in string.printable, server['name']))
             servers.append(str(server['online']).zfill(2) + ' ' + server['name'].replace('`',''))
         servers = '\n'.join(servers[:15])
-        return '```python\nServer List -- servers(' + str(servercount) + ') online(' + str(totalmemcount) +') members.\n' + str(servers) + '\n```'
+        return '```python\nServer List -- servers(' + str(servercount) + ') online(' + str(totalmemcount) +') members.\n' + str(servers) + '\nand more...```'
 
     def __init__(self, bot):
         self.bot = bot
