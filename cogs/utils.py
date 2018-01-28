@@ -54,7 +54,7 @@ class Utility:
     async def help(self, ctx):
         general_commands = "`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `aq3ditem(buggy)`, `aq3dserver`, `aq3dnews`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `aq3ditem(buggy)`, `aq3dserver`, `aq3dnews(down atm)`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
         music_command = "`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "`translator`"
@@ -75,7 +75,7 @@ class Utility:
         em.add_field(name = "7.Miscellaneous ", value =miscellaneous_commands ,inline = False)
         em.add_field(name = "8.Anime Stuff ", value =anime_commands ,inline = False)
         em.add_field(name = "9.Expanded help: ", value = further_help ,inline = False)
-        em.add_field(name = "Help Server:", value = "https://discord.gg/k3PKut6", inline = False)
+        em.add_field(name = "10.Support/Server:", value = "[Upvote](https://discordbots.org/bot/385681784614027265)\n\n[Server](https://discord.gg/k3PKut6)", inline = False)
         em.colour = discord.Colour.blue()
         em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
         await ctx.send(content = "**Prefixes: w!, $**\n",embed = em)
