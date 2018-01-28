@@ -116,7 +116,11 @@ class Gen:
     @commands.command(aliases=['speak','talk'])
     async def say(self, ctx, *, args:str = None):
         '''repeats what you say'''
-        await ctx.send(args)
+        try:
+            await ctx.message.delete()
+            await ctx.send(args)
+        except:
+            await ctx.send(args)
 
 
 
