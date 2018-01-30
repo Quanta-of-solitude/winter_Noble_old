@@ -44,7 +44,7 @@ class ServerList():
     @commands.command(aliases=['fullserver', 'fsvrlist', 'flists'])
     async def fullserverlist(self,ctx):
         try:
-            if ctx.message.author.id == 280271578850263040:
+            if ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
                 servers = self.serverlistget()
                 try:
                     out = await ctx.send(servers)
