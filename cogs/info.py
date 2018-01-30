@@ -180,7 +180,7 @@ class Information:
         total_online = len({m.id for m in self.bot.get_all_members() if m.status is discord.Status.online})
         total_unique = len(self.bot.users)
         description = "```I am a simple bot designed for general purposes!\nFocused mainly in AE section at the moment.Sadly, I am not complete yet, but thanks for using me, I will get better with time :D```"
-        embed.add_field(name='Author:', value='```Name: Quanta#5556 (N)\nID: 280271578850263040```', inline = False)
+        embed.add_field(name='Author:', value='```Name: Quanta#5556 (N)\nID: 280271578850263040\n\nMaintained by: Hydra#9574\nID: 283413165381910539```', inline = False)
         embed.add_field(name = 'Description:', value = description, inline = False)
         embed.add_field(name='Total Members:', value=f'{total_members}', inline = False)
         memory_usage = self.bot.process.memory_full_info().uss / 1024**2
