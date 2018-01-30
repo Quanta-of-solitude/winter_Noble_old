@@ -44,7 +44,7 @@ class ServerList():
     @commands.command()
     async def serverlist(self,ctx):
         try:
-            if ctx.message.author.id == 280271578850263040:
+            if ctx.message.author.id == 280271578850263040 or ctx.message.author.id == 283413165381910539:
                 await ctx.send(self.serverlistget())
         except Exception as e:
             print(e)
