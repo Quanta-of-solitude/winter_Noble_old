@@ -11,7 +11,7 @@ class OwnerCog:
         self.bot = bot
 
     async def is_owner(ctx):
-        return ctx.author.id == 280271578850263040
+        return (ctx.author.id == 280271578850263040 or ctx.author.id == 283413165381910539)
     @commands.command(name='load', hidden=True)
     @commands.check(is_owner)
     async def cog_load(self, ctx, *, cog: str):
