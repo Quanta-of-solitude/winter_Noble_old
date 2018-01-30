@@ -18,7 +18,7 @@ class cmds:
         self.bot = bot
 
     async def is_owner(ctx):
-        return ctx.author.id == 280271578850263040
+        return (ctx.author.id == 280271578850263040 or ctx.author.id == 283413165381910539)
 
     def load_url(self):
         '''load the simple storage url'''
