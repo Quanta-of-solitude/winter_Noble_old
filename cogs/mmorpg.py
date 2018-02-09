@@ -168,6 +168,8 @@ class mmorpg:
                 return
             link = self.item_link
             new_text = args.replace(' ','-')
+            new_text = new_text.replace("'", "-")
+            new_text = new_text.replace("’", "-")
             new_text = new_text.lower()
             link = link+new_text
             r = requests.get(link)
@@ -175,14 +177,16 @@ class mmorpg:
             things = {}
             things["Text"] = soup.find("div", {"id": "page-content"}).get_text()
             things=dict(map(str.strip,x) for x in things.items())
-            new = things["Text"].replace("\n\n\n",'\n')
-            lel = new.replace("""//<![CDATA[
-OZONE.dom.onDomReady(function(){
-        var tabViewdc6ef427b3a76320ecea0156f609b5a3 = new YAHOO.widget.TabView('wiki-tabview-dc6ef427b3a76320ecea0156f609b5a3');
-                }, "dummy-ondomready-block");
-
-//]]>""","Hello")
-            buggy.append(lel)
+            matcher = things["Text"].replace("\n\n","")
+            pattern = re.compile("//<.*",re.DOTALL)
+            m = pattern.findall(things["Text"])
+            replacer = m
+            if not m:
+                new = things["Text"].replace("\n\n\n",'\n')
+            else:
+                new = things["Text"].replace(replacer[0], "----")
+                new = new.replace("\n\n\n",'\n')
+            buggy.append(new)
             new_data = '\n'.join(buggy)
             await ctx.trigger_typing()
 
@@ -209,6 +213,7 @@ OZONE.dom.onDomReady(function(){
                 print(str(e))
                 del buggy[:]
         except Exception as e:
+            print(e)
             #pass
             try:
                 results = []
@@ -480,7 +485,7 @@ OZONE.dom.onDomReady(function(){
 
     @commands.command(aliases = ["aqwiki","aqitem"])
     async def aqwitem(self,ctx, *,args:str = None):
-        '''AQ3D item details'''
+        '''AQW item details'''
         try:
             if args == None:
                 await ctx.send("`Error; Item name not provided.`")
