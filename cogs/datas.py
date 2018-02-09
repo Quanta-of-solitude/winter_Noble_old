@@ -7,6 +7,7 @@ import os
 import discord
 from discord.ext import commands
 import json
+import uuid
 import myjson
 
 class Datas:
