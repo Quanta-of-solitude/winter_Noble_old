@@ -54,7 +54,7 @@ class Utility:
     async def help(self, ctx):
         general_commands = "`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `aq3ditem(buggy)`, `aq3dserver`, `aq3dnews(down atm)`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `aq3ditem(buggy)`, `aq3dserver`, `aq3dnews`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
         music_command = "`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "`translator`"
@@ -75,7 +75,8 @@ class Utility:
         em.add_field(name = "7.Miscellaneous ", value =miscellaneous_commands ,inline = False)
         em.add_field(name = "8.Anime Stuff ", value =anime_commands ,inline = False)
         em.add_field(name = "9.Expanded help: ", value = further_help ,inline = False)
-        em.add_field(name = "10.Support/Server:", value = "[Upvote](https://discordbots.org/bot/385681784614027265)\n\n[Server](https://discord.gg/k3PKut6)", inline = False)
+        em.add_field(name = "10.Report a problem: ", value = "fF you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
+        em.add_field(name = "Support/Server:", value = "[Upvote](https://discordbots.org/bot/385681784614027265)\n\n[Server](https://discord.gg/k3PKut6)", inline = False)
         em.colour = discord.Colour.blue()
         em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
         await ctx.send(content = "**Prefixes: w!, $**\n",embed = em)
@@ -510,6 +511,16 @@ class Utility:
         elif args == 'toggleleave':
             info = "Set the leave message function to on/off"
             usage = "w!toggleleave on  < To set it on.\nw!toggleleave off <To set it off.\n\n**Default:** off"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'report':
+            info = "Report a problem or suggest something!"
+            usage = "w!report [text].\nFor Example: w!report char page command isnt working!"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
