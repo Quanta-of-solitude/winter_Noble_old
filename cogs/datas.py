@@ -25,8 +25,16 @@ class Datas:
         data = myjson.get(url)
         data = json.loads(data)
         data = json.dumps(data)
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
 
-        await ctx.send("```js\n"+data+"```")
     @commands.command()
     @commands.check(have_permissions)
     async def dataleave(self,ctx):
@@ -36,7 +44,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
     @commands.command()
     @commands.check(have_permissions)
     async def datatogglewel(self,ctx):
@@ -46,7 +62,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
 
     @commands.command()
     @commands.check(have_permissions)
@@ -57,7 +81,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
 
     @commands.command()
     @commands.check(have_permissions)
@@ -68,7 +100,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
 
     @commands.command()
     @commands.check(have_permissions)
@@ -79,7 +119,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
     @commands.command()
     @commands.check(have_permissions)
     async def datacmds(self,ctx):
@@ -89,7 +137,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
 
     @commands.command()
     @commands.check(have_permissions)
@@ -100,7 +156,15 @@ class Datas:
         data = json.loads(data)
         data = json.dumps(data)
 
-        await ctx.send("```js\n"+data+"```")
+        try:
+            out = await ctx.send("```js\n"+data+"```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```js\n{page}\n```')
+                    break
+                await ctx.send(f'```js\n{page}\n```')
 
 def setup(bot):
 	bot.add_cog(Datas(bot))
