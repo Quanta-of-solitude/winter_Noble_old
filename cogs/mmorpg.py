@@ -114,7 +114,10 @@ class mmorpg:
                 badges.append(fmf)
                 klma = '\n'.join(badges)
             info['cl'] = c['alt']
-            info['clpic'] = 'https://game.aq3d.com' + c['src']
+            if info['cl'] == "Dragonslayer":
+                info['clpic'] = "https://aq3d.com/media/1916/aq3d-dragonslayer.jpg"
+            else:
+                info['clpic'] = 'https://game.aq3d.com' + c['src']
             #loki = lolewii+"Class:"+"\n"+info['cl']+"\n"+"\n"+" **__Badges__** \n"+" **"+klma+"**"
             player_name = lolewii
             player_class = info['cl']
@@ -131,7 +134,11 @@ class mmorpg:
             del player[:]
             del badges [:]
         except Exception as e:
-            await ctx.send("`-None found-`")
+            try:
+                text_made = f"Name: {player_name}\nClass: {player_class}\n\nBadges:\n{player_badges}"
+                await ctx.send("__**Note:**__ This is being displayed like this because I am missing The **Embed Permission** in the server.\n"+"```"+text_made+"```")
+            except Exception as err:
+                await ctx.send("`-NONE FOUND-`")
 
     @commands.command(aliases=['aq3dservers','serveraq3d'])
     async def aq3dserver(self,ctx):
