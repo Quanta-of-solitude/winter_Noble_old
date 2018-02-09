@@ -474,11 +474,13 @@ class Welcomer:
                     pass
         except Exception as e:
             print(e)
-            if "{}".format(server.id) in data_message and data_toggle["{}".format(server.id)]["set_welcome"] == "on" and data_type["{}".format(server.id)]["msg_type"] == "pic":
-                channel_id = data_message["{}".format(server.id)]["channel_id"]
-                channel = self.bot.get_channel(int(channel_id))
-                await channel.send("`Error encountered while creating image, please check the format of the bg provided(png, jpg).`\n**Welcome!**{0.mention}".format(member))
-
+            try:
+                if "{}".format(server.id) in data_message and data_toggle["{}".format(server.id)]["set_welcome"] == "on" and data_type["{}".format(server.id)]["msg_type"] == "pic":
+                    channel_id = data_message["{}".format(server.id)]["channel_id"]
+                    channel = self.bot.get_channel(int(channel_id))
+                    await channel.send("`Error encountered while creating image, please check the format of the bg provided(png, jpg).`\n**Welcome!**{0.mention}".format(member))
+            except Exception as erre:
+                print(erre)
     async def on_member_remove(self,member):
         '''Leave!'''
         try:
