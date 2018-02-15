@@ -7,6 +7,7 @@ import discord
 import random
 from discord.ext import commands
 import io
+from aiohttp import ClientSession
 
 class Emojis:
 
@@ -96,5 +97,53 @@ class Emojis:
 ```
 """
         await ctx.send(commands)
+
+    @commands.command(aliases = ["aem"])
+    async def aniemo(self,ctx, *,args:str = None):
+        try:
+            if args == None:
+                await ctx.send("`Emoji Name not provided!`")
+                return
+            else:
+                emoji_names = []
+                emojis_an = []
+                server = "{}".format(os.environ.get("emojis_an"))
+                server = int(server)
+                guild_n = self.bot.get_guild(server)
+                for e in guild_n.emojis:
+                    emoji_name =  "{}".format(e.name)
+                    emojis_f = "{}".format(e)
+                    emoji_names.append(emoji_name)
+                    emojis_an.append(emojis_f)
+                if args in emoji_names:
+                    n = emoji_names.index("{}".format(args))
+                    #print(n
+                    emoji_found = emojis_an[n]
+                    await ctx.send(emoji_found)
+                else:
+                    await ctx.send("`Error: Such emoji isn't on the list!`")
+        except Exception as e:
+            print(e)
+
+    @commands.command(aliases = ["animatedemojis","aeml","listemo"])
+    async def listani(self,ctx):
+        emoji_names = []
+        server = "{}".format(os.environ.get("emojis_an"))
+        server = int(server)
+        guild_n = self.bot.get_guild(server)
+        for e in guild_n.emojis:
+            emoji_name =  "{}".format(e.name)
+            emoji_names.append(emoji_name)
+        emo = '\n'.join(emoji_names)
+        em = discord.Embed(title = "Emojis", url = "https://getemoji.com/")
+        em.add_field(name = "Available: ", value = "**"+emo+"**",inline = False)
+        em.color=discord.Colour.red()
+        em.set_footer(text = "|Winter-Song|",  icon_url = self.bot.user.avatar_url)
+        await ctx.send(embed = em)
+
+
+
+
+
 def setup(bot):
 	bot.add_cog(Emojis(bot))
