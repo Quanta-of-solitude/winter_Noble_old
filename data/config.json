@@ -1,5 +1,5 @@
 {
-    "PREFIX": ["w!","$","win", "Win"],
+    "PREFIX": ["w!","$","win","Win","W!"],
     "TOKEN": "your_token_here",
     "api_link": "api_link_here",
     "char_link": "link_here",
