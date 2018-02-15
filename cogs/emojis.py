@@ -92,7 +92,13 @@ class Emojis:
 3. linkify: Get link of an attachment. (good for mobile users)
     Aliases: attach, link
 
-4. emoji: Get the help menu.
+4. listani: Gives list of available animated emojis.
+    Aliases: aeml, listemo
+
+5. aem: use the animated emoji, check the list first.
+    Aliases: aniemo
+
+6. emoji: Get the help menu.
     Aliases: helpemoji, emojihelp, emojis
 ```
 """
@@ -121,7 +127,7 @@ class Emojis:
                     emoji_found = emojis_an[n]
                     await ctx.send(emoji_found)
                 else:
-                    await ctx.send("`Error: Such emoji isn't on the list!`")
+                    await ctx.send("`Error: Such emoji isn't on the list! Check the list with w!listemo`")
         except Exception as e:
             print(e)
 
