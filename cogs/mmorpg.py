@@ -150,12 +150,35 @@ class mmorpg:
             g= soup.find("p").get_text()
             server_details = json.loads(g)
             await ctx.trigger_typing()
+            try:
+                server1_state = server_details[0]["State"]
+                if server1_state == True:
+                    server1_state = "Online"
+                elif not server1_state:
+                    server1_state = "Unknown"
+                else:
+                    server1_state = "Offline"
+            except Exception as e:
+                print(e)
+                server1_state = "Unknown"
+
+            try:
+                server2_state = server_details[1]["State"]
+                if server2_state == True:
+                    server2_state = "Online"
+                elif not server2_state:
+                    server2_state = "Unknown"
+                else:
+                    server2_state = "Offline"
+            except Exception as e:
+                print(e)
+                server2_state = "Unknown"
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
             data +="Users: {}/{}\n".format(server_details[0]["UserCount"],server_details[0]["MaxUsers"])
-            data +="Status: %s\n\n"%("Online" if server_details[0]["State"] == True else "Offline" )
+            data +="Status: %s\n\n"%(server1_state)
             data += "Server Name: **{}**\n".format(server_details[1]["Name"])
             data +="Users: {}/{}\n".format(server_details[1]["UserCount"],server_details[1]["MaxUsers"])
-            data +="Status: %s\n\n"%("Online" if server_details[1]["State"] == True else "Offline" )
+            data +="Status: %s\n\n"%(server2_state)
             server_embed = discord.Embed(description = data)
             server_embed.set_author(name = "Server Details:")
             server_embed.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
