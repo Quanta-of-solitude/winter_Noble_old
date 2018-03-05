@@ -188,6 +188,40 @@ class mmorpg:
         except:
             await ctx.send("`Servers are offline or under testing. `")
 
+    @commands.command(aliases = ['ptrstatus','aq3dptrserver'])
+    async def aq3dptr(self, ctx):
+        '''ptr details'''
+        try:
+            link = "{}".format(os.environ.get("aq3d_ptr"))
+            rw = requests.get(link)
+            server_details = json.loads(rw.content)
+            rq_server = server_details[0]
+            #print(rq_server)
+            try:
+                server1_state = rq_server["State"]
+                if server1_state == True:
+                    server1_state = "**Online: PTR is UP!**"
+                elif not server1_state:
+                    server1_state = "Unknown"
+                else:
+                    server1_state = "Offline"
+            except Exception as e:
+                print(e)
+                server1_state = "Unknown"
+            data = "Server Name: **{}**\n".format(rq_server["Name"])
+            data +="Users: {}/{}\n".format(rq_server["UserCount"],rq_server["MaxUsers"])
+            data +="Status: %s\n\n\n\n"%(server1_state)
+            data +="**Help:** [How to access ptr](https://aq3d.com/news/ptr/)"
+            server_embed = discord.Embed(description = data)
+            server_embed.set_author(name = "PTR (Public Testing Realm):")
+            server_embed.set_thumbnail(url = "https://image.ibb.co/fjYTYS/ptr.jpg")
+            server_embed.set_footer(text = "|Winter-Song| requested by {}".format(ctx.message.author.name), icon_url = self.bot.user.avatar_url)
+            server_embed.color=discord.Colour.blue()
+            await ctx.send(embed = server_embed)
+        except Exception as e:
+            print(e)
+            await ctx.send("`PTR is Down! or internal error :P`")
+
     @commands.command()
     async def aq3ditem(self,ctx, *,args:str = None):
         '''AQ3D item details'''
