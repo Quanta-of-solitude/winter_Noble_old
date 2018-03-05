@@ -54,7 +54,7 @@ class Utility:
     async def help(self, ctx):
         general_commands = "`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dptr`, `aq3dnews(not stable always)`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
         music_command = "`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "`translator`"
