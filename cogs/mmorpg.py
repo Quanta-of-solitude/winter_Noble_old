@@ -142,14 +142,33 @@ class mmorpg:
 
     @commands.command(aliases=['aq3dservers','serveraq3d'])
     async def aq3dserver(self,ctx):
-        '''Details about aq3d Servers'''
+        '''Details about aq3d Servers and ptr'''
         try:
             link = self.server_details
             rw = requests.get(link)
             soup = BeautifulSoup(rw.content, 'lxml')
             g= soup.find("p").get_text()
             server_details = json.loads(g)
+            link2 = "{}".format(os.environ.get("aq3d_ptr"))
+            rwp = requests.get(link2)
+            serverp_details = json.loads(rwp.content)
+            rq_server = serverp_details[0]
+            #print(rq_server)
+            try:
+                serverp_state = rq_server["State"]
+
+                if serverp_state == True:
+                    serverp_state = "**Online: PTR is UP!**"
+                elif not serverp_state:
+                    serverp_state = "Unknown"
+                else:
+                    serverp_state = "Offline"
+            except Exception as e:
+                print(e)
+                serverp_state = "Unknown"
+
             await ctx.trigger_typing()
+
             try:
                 server1_state = server_details[0]["State"]
                 if server1_state == True:
@@ -164,6 +183,7 @@ class mmorpg:
 
             try:
                 server2_state = server_details[1]["State"]
+
                 if server2_state == True:
                     server2_state = "Online"
                 elif not server2_state:
@@ -173,19 +193,26 @@ class mmorpg:
             except Exception as e:
                 print(e)
                 server2_state = "Unknown"
+
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
-            data +="Users: {}/{}\n".format(server_details[0]["UserCount"],server_details[0]["MaxUsers"])
+            data +="Count: {}/{}\n".format(server_details[0]["UserCount"],server_details[0]["MaxUsers"])
             data +="Status: %s\n\n"%(server1_state)
             data += "Server Name: **{}**\n".format(server_details[1]["Name"])
-            data +="Users: {}/{}\n".format(server_details[1]["UserCount"],server_details[1]["MaxUsers"])
+            data +="Count: {}/{}\n".format(server_details[1]["UserCount"],server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server2_state)
+            data +="\n\n__**PTR Details**__\n\n"
+            data += "Server Name: **{}**\n".format(rq_server["Name"])
+            data +="Count: {}/{}\n".format(rq_server["UserCount"],rq_server["MaxUsers"])
+            data +="Status: %s\n\n\n\n"%(serverp_state)
+            data +="**Help:** [How to access ptr?](https://aq3d.com/news/ptr/)"
             server_embed = discord.Embed(description = data)
             server_embed.set_author(name = "Server Details:")
             server_embed.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
             server_embed.set_footer(text = "|Winter-Song| requested by {}".format(ctx.message.author.name), icon_url = self.bot.user.avatar_url)
             server_embed.color=discord.Colour.blue()
             await ctx.send(embed = server_embed)
-        except:
+        except Exception as e:
+            print(e)
             await ctx.send("`Servers are offline or under testing. `")
 
     @commands.command(aliases = ['ptrstatus','aq3dptrserver'])
