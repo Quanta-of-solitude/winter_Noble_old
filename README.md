@@ -9,7 +9,7 @@ Winter-Song is an ongoing bot, its base is dervied(because I was lazy).
 
 It's an experimental bot, developed after another bot.
 
-Owner: Quanta#5556 (N)
+Owner: Neophyte5556 (N)
 
 
 
