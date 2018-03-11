@@ -1,7 +1,7 @@
 '''
 Winter-Song!
 
- by Quanta#5556 (Noble)
+ by Neophyte#5556 (Noble)
 
 '''
 import os
@@ -18,7 +18,7 @@ import aiohttp
 
 class NewBot(commands.Bot):
     '''
-    A Bot Made by ~ Quanta#5556
+    A Bot Made by ~ Neophyte#5556
     '''
     mentions_transforms = {
           '@everyone': '@\u200beveryone',
@@ -78,7 +78,7 @@ class NewBot(commands.Bot):
     async def on_ready(self):
         '''SET THE UPTIME'''
         self.uptime = datetime.datetime.utcnow()
-        await self.change_presence(game = discord.Game(name="w!help",type =0))
+        await self.change_presence(activity = discord.Game(name="w!help",type))
 
     async def on_command(self, ctx):
         cmd = ctx.command.qualified_name.replace(' ', '_')
