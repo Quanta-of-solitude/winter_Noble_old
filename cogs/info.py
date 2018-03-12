@@ -127,7 +127,7 @@ class Information:
         time = ctx.message.created_at
         channel = ctx.channel
         user_name = user.name
-        try:
+        '''try:
             msg = await channel.history(limit = None).get(author__name='{}'.format(user_name))
             duration = time- msg.created_at
             seconds = duration.total_seconds()
@@ -141,7 +141,7 @@ class Information:
             formatted_seen = "**{} hrs, {} mins and {} secs ago. |({}) days ago.|**".format(hours,minutes,seconds,passer)
         except Exception as e:
             #print(e)
-            formatted_seen = "The user didn't type here, yet."
+            formatted_seen = "The user didn't type here, yet."'''
         passed = (ctx.message.created_at - user.created_at).days
         created_at = "{}.  **({})** days ago.".format(user.created_at.strftime("%d %b %Y"), passed)
         passed1 = (ctx.message.created_at - user.joined_at).days
@@ -155,7 +155,7 @@ class Information:
         em.add_field(name='Playing:', value=user.game, inline = False)
         em.add_field(name='Account Created:', value= created_at, inline = False)
         em.add_field(name='Join Date:', value=joined_at, inline = False)
-        em.add_field(name='Last Seen on this channel:', value= formatted_seen, inline = False)
+        #em.add_field(name='Last Seen on this channel:', value= formatted_seen, inline = False)
         em.add_field(name='Bot Account:', value=user.bot, inline = False)
         em.add_field(name='Roles:', value=rolenames, inline=False)
         em.set_footer(text='User ID: '+str(user.id))
