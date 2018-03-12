@@ -38,7 +38,7 @@ class Emojis:
                 await ctx.send(emo.url)
         except Exception as e:
 		
-            await ctx.send(f"`Error: That isn't an emoji!`")
+            await ctx.send("`Error: That isn't an emoji!`")
 
     @commands.command(aliases=['attach', 'link'])
     async def linkify(self,ctx):
