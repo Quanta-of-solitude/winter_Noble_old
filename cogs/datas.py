@@ -1,7 +1,7 @@
 '''
 TO get the datas
 
-cog by Quanta#5556
+cog by Neophyte#5556
 '''
 import os
 import discord
