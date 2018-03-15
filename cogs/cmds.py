@@ -2,7 +2,7 @@
 Anybody can add commands, and edit them, can put pictures or texts but not both.
 PS: if using pics , do not use short links, instead use those with extension. <Just a suggestion
 
-Cog By Quanta#5556
+Cog By Neophyte#5556
 
 '''
 import os
