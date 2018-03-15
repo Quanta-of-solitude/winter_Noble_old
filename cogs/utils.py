@@ -75,7 +75,7 @@ class Utility:
         em.add_field(name = "7.Miscellaneous ", value =miscellaneous_commands ,inline = False)
         em.add_field(name = "8.Anime Stuff ", value =anime_commands ,inline = False)
         em.add_field(name = "9.Expanded help: ", value = further_help ,inline = False)
-        em.add_field(name = "10.Report a problem: ", value = "fF you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
+        em.add_field(name = "10.Report a problem: ", value = "If you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
         em.add_field(name = "Support/Server:", value = "[Upvote](https://discordbots.org/bot/385681784614027265)\n\n[Server](https://discord.gg/k3PKut6)", inline = False)
         em.colour = discord.Colour.blue()
         em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
