@@ -160,49 +160,78 @@ class mmorpg:
                 if serverp_state == True:
                     serverp_state = "**Online: PTR is UP!**"
                 elif not serverp_state:
-                    serverp_state = "Unknown"
+                    serverp_state = "**Unknown**"
                 else:
-                    serverp_state = "Offline"
+                    serverp_state = "**Offline**"
             except Exception as e:
                 print(e)
-                serverp_state = "Unknown"
+                serverp_state = "**Offline: PTR is DOWN!**"
 
             await ctx.trigger_typing()
 
             try:
                 server1_state = server_details[0]["State"]
                 if server1_state == True:
-                    server1_state = "Online"
+                    server1_state = "**Online**"
                 elif not server1_state:
-                    server1_state = "Unknown"
+                    server1_state = "**Unknown**"
                 else:
-                    server1_state = "Offline"
+                    server1_state = "**Offline**"
             except Exception as e:
                 print(e)
-                server1_state = "Unknown"
+                server1_state = "**Unknown**"
 
             try:
                 server2_state = server_details[1]["State"]
 
                 if server2_state == True:
-                    server2_state = "Online"
+                    server2_state = "**Online**"
                 elif not server2_state:
-                    server2_state = "Unknown"
+                    server2_state = "**Unknown**"
                 else:
-                    server2_state = "Offline"
+                    server2_state = "**Offline**"
             except Exception as e:
                 print(e)
-                server2_state = "Unknown"
+                server2_state = "**Unknown**"
+
+            try:
+                countr = server_details[0]["UserCount"]
+                if countr:
+                    countr = server_details[0]["UserCount"]
+                elif not countr:
+                    countr = "0"
+            except Exception as e:
+                print(e)
+                countr = "None"
+            try:
+                countb = server_details[1]["UserCount"]
+                if countb:
+                    countb = server_details[1]["UserCount"]
+                elif not countb:
+                    countb = "0"
+            except Exception as e:
+                print(e)
+                countb = "None"
+
+            try:
+                countp = rq_server["UserCount"]
+                if countp:
+                    countp = rq_server["UserCount"]
+                elif not countp:
+                    countb = "0"
+            except Exception as e:
+                print(e)
+                countp = "None"
 
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
-            data +="Count: {}/{}\n".format(server_details[0]["UserCount"],server_details[0]["MaxUsers"])
+            data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server1_state)
             data += "Server Name: **{}**\n".format(server_details[1]["Name"])
-            data +="Count: {}/{}\n".format(server_details[1]["UserCount"],server_details[1]["MaxUsers"])
+            data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server2_state)
             data +="\n\n__**PTR Details**__\n\n"
             data += "Server Name: **{}**\n".format(rq_server["Name"])
-            data +="Count: {}/{}\n".format(rq_server["UserCount"],rq_server["MaxUsers"])
+            data +="Count: {}/{}\n".format(countp,rq_server["MaxUsers"])
             data +="Status: %s\n\n\n\n"%(serverp_state)
             data +="**Help:** [How to access ptr?](https://aq3d.com/news/ptr/)"
             server_embed = discord.Embed(description = data)
