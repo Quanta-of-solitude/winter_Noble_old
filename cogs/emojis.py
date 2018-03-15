@@ -1,5 +1,5 @@
 ''''
-emoji related  ~ Quanta#5556
+emoji related  ~ Neophyte#5556
 '''
 
 import os
