@@ -52,16 +52,17 @@ class Utility:
 
     @commands.command(name='help')
     async def help(self, ctx):
-        general_commands = "`user`, `server`, `help` , `invite`, `about`, `avatar`"
+        general_commands = "\n`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\niii)EpicDuel: `epchar` """
-        music_command = "`music`"
+        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
+        other_games = "\n`osu`"
+        music_command = "\n`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
-        translator_commands = "`translator`"
-        miscellaneous_commands = "`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
+        translator_commands = "\n`translator`"
+        miscellaneous_commands = "\n`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
         welcome_commands = "**__NOTE__**: Will be developed Futher, servers that enabled welcome messages before, are asked to set type using w!settype, for details check w!expand settype.\n\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
-        anime_commands = "`anisearch`, `anidata`"
-        further_help = "`expand[command]`"
+        anime_commands = "`\nanisearch`, `anidata`"
+        further_help = "`\nexpand[command]`"
         #await ctx.send("**WILL BE DEVELOPED FURTHER:**\n"+"```\n"+help_cmd+"```")
         em = discord.Embed(title = "Commands List:", url = "https://winter-song-web.herokuapp.com/")
         em.set_thumbnail(url = self.bot.user.avatar_url)
@@ -69,14 +70,15 @@ class Utility:
         em.add_field(name = "1.General:", value = general_commands,inline = False)
         em.add_field(name = "2.Moderation: ", value = moderation_commands ,inline = False)
         em.add_field(name = "3.AE: ", value = aq_commands ,inline = False)
-        em.add_field(name = "4.Music ", value = music_command ,inline = False)
-        em.add_field(name = "5.Translator:", value = translator_commands, inline = False)
-        em.add_field(name = "6.Welcome/Leave", value = welcome_commands, inline = False)
-        em.add_field(name = "7.Miscellaneous ", value =miscellaneous_commands ,inline = False)
-        em.add_field(name = "8.Anime Stuff ", value =anime_commands ,inline = False)
-        em.add_field(name = "9.Expanded help: ", value = further_help ,inline = False)
-        em.add_field(name = "10.Report a problem: ", value = "If you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
-        em.add_field(name = "Support/Server:", value = "[Upvote](https://discordbots.org/bot/385681784614027265)\n\n[Server](https://discord.gg/k3PKut6)", inline = False)
+        em.add_field(name = "4.Other Games: ", value = other_games ,inline = False)
+        em.add_field(name = "5.Music ", value = music_command ,inline = False)
+        em.add_field(name = "6.Translator:", value = translator_commands, inline = False)
+        em.add_field(name = "7.Welcome/Leave", value = welcome_commands, inline = False)
+        em.add_field(name = "8.Miscellaneous ", value =miscellaneous_commands ,inline = False)
+        em.add_field(name = "9.Anime Stuff ", value =anime_commands ,inline = False)
+        em.add_field(name = "10.Expanded help: ", value = further_help ,inline = False)
+        em.add_field(name = "11.Report a problem: ", value = "If you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
+        em.add_field(name = "Support/Server:", value = "[Upvote The BOT!](https://discordbots.org/bot/385681784614027265)\n[Support Server](https://discord.gg/k3PKut6)", inline = False)
         em.colour = discord.Colour.blue()
         em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
         await ctx.send(content = "**Prefixes: w!, $**\n",embed = em)
@@ -149,6 +151,16 @@ class Utility:
         elif args == 'rate':
             info = "Get a werid rating graph about yourself. The Graph is always weird "
             usage = "w!rate.\n**For Example:** w!rate (for yourself) or w!rate @mention (for an user)."
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'osu':
+            info = "Get Info about an osu! player."
+            usage = "w!osu [username].\n**For Example:** w!osu Sylphynn\n\nPS: Thanks to Sylphynn#6329 for the quick help."
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
