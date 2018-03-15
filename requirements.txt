@@ -17,4 +17,4 @@ wikipedia
 numpy
 matplotlib
 flickrapi
-dblpy
+
