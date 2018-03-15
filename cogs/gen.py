@@ -1,7 +1,7 @@
 ''' A rewritten cog, consisting of old personal commands (just for fun) also has kiss, hug, slap commands.
 PS: THIS ISNT CUSTOM COMMANDS
 
-by Quanta#5556 (N)
+by Neophyte#5556 (N)
 '''
 import os
 import discord
