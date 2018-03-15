@@ -1,5 +1,5 @@
 '''
-MMORPG COG (Currently for aq3d) written by Quanta#5556 (N)
+MMORPG COG (Currently for aq3d) written by Neophyte#5556
 
 news api from Sypher#6671
 '''
