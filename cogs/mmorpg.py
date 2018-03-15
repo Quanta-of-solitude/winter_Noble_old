@@ -114,10 +114,7 @@ class mmorpg:
                 badges.append(fmf)
                 klma = '\n'.join(badges)
             info['cl'] = c['alt']
-            if info['cl'] == "Dragonslayer":
-                info['clpic'] = "https://aq3d.com/media/1916/aq3d-dragonslayer.jpg"
-            else:
-                info['clpic'] = 'https://game.aq3d.com' + c['src']
+            info['clpic'] = 'https://game.aq3d.com' + c['src']
             #loki = lolewii+"Class:"+"\n"+info['cl']+"\n"+"\n"+" **__Badges__** \n"+" **"+klma+"**"
             player_name = lolewii
             player_class = info['cl']
@@ -747,7 +744,55 @@ class mmorpg:
         except Exception as e:
             await ctx.send("`-None Found-`")
 
-
+'''------------------------------------------------------------NOT MMORPG SECTION------------------------------------------------------------------'''
+    @commands.command()
+    async def osu(self,ctx, *,user:str = None):
+        '''osu data'''
+        try:
+            if user == None:
+                await ctx.send("`No Name Provided!`")
+                return
+            org = user.replace(' ','%20')
+            user = user.replace(' ','+')
+            osu_api = "{}".format(os.environ.get("osu_api"))
+            osu_api = osu_api+user
+            osu_api = osu_api+"&k={}".format(os.environ.get("osu_key"))
+            r = requests.get(osu_api)
+            datas = json.loads(r.content)
+            datas = datas[0]
+            ss=datas["count_rank_ss"]
+            ssh=datas["count_rank_ssh"]
+            s=datas["count_rank_s"]
+            sh=datas["count_rank_sh"]
+            a=datas["count_rank_a"]
+            url_img = f"https://osu.ppy.sh/u/{org}"
+            rimg = requests.get(url_img)
+            soup = BeautifulSoup(rimg.content, 'lxml')
+            imgg = soup.find("img", {"alt": "User avatar"})
+            image_f = imgg["src"]
+            image_f = "https:"+image_f
+            em = discord.Embed(title = "OSU!", url = f"https://osu.ppy.sh/u/{org}")
+            em.set_thumbnail(url = image_f)
+            em.colour = discord.Colour.green()
+            em.add_field(name = "Name:",value =datas["username"],inline = False )
+            em.add_field(name = "ID:",value =datas["user_id"],inline = False )
+            em.add_field(name = "Level:",value ="{0:.2f}".format(float(datas["level"])),inline = False )
+            em.add_field(name = "Performance:",value ="{0:.2f}pp (#{1})".format(float(datas["pp_raw"]), locale.format("%d", int(datas["pp_rank"]), grouping= True)),inline = False )
+            em.add_field(name = "Ranked Score:",value =locale.format("%d", int(datas["ranked_score"]), grouping= True),inline = False )
+            em.add_field(name = "Ranks:",value =f"SS: {ss}\nSSH: {ssh}\nS: {s}\nSH: {sh}\nA: {a}",inline = False )
+            em.add_field(name = "Country:",value =datas["country"],inline = False )
+            em.add_field(name = "Country Rank:",value =locale.format("%d", int(datas["pp_country_rank"]), grouping= True),inline = False )
+            try:
+                events = datas["events"]
+                if not events:
+                    events = "None"
+                em.add_field(name = "Events",value = events,inline = False )
+            except:
+                events = "None"
+            await ctx.send(embed = em)
+        except Exception as e:
+            print(e)
+            await ctx.send("`-None Found-`")
 
 def setup(bot):
 	bot.add_cog(mmorpg(bot))
