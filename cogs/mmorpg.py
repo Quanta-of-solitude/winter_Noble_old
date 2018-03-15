@@ -744,7 +744,7 @@ class mmorpg:
         except Exception as e:
             await ctx.send("`-None Found-`")
 
-'''------------------------------------------------------------NOT MMORPG SECTION------------------------------------------------------------------'''
+#NON MMORPG SECTION
     @commands.command()
     async def osu(self,ctx, *,user:str = None):
         '''osu data'''
