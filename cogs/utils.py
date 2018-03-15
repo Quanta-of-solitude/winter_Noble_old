@@ -60,7 +60,7 @@ class Utility:
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "\n`translator`"
         miscellaneous_commands = "\n`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
-        welcome_commands = "**__NOTE__**: Will be developed Futher, servers that enabled welcome messages before, are asked to set type using w!settype, for details check w!expand settype.\n\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
+        welcome_commands = "\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
         anime_commands = "`\nanisearch`, `anidata`"
         further_help = "`\nexpand[command]`"
         #await ctx.send("**WILL BE DEVELOPED FURTHER:**\n"+"```\n"+help_cmd+"```")
