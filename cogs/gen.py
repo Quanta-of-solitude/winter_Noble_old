@@ -11,9 +11,9 @@ import aiohttp
 import async_timeout
 from flickrapi import FlickrAPI
 import random
+import requests
 from random import randint
 from discord.ext import commands
-from cleverwrap import CleverWrap
 import collections
 bot = discord.Client()
 c = collections.Counter()
@@ -94,10 +94,12 @@ class Gen:
         if args == None:
             return
         cl_key = self.cleverbot_Key
-        cl_load = CleverWrap("{}".format(cl_key))
-        cl_resp = cl_load.say("{}".format(args))
-        await ctx.send(content = cl_resp)
-        cl_load.reset()
+        args = args.replace(" ", "%20")
+        url = "http://www.cleverbot.com/getreply?key={0}&input={1}".format(cl_key,args)
+        r = requests.get(url)
+        reply = json.loads(r.content)
+        reply = reply["output"]
+        await ctx.send(reply)
 
     @commands.command(aliases=['8ball','eightball'])
     async def eball(self, ctx, *, args:str = None):
