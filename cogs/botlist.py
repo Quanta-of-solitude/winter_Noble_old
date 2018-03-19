@@ -13,8 +13,8 @@ class DBList:
         dbltoken = "{}".format(os.environ.get("dbltokenT"))
         headers = {"Authorization": dbltoken}
         while True:
-            id_self = str(self.bot.user.id)
-            urlbot = "https://discordbots.org/api/bots/%s/stats"%(id_self)
+            
+            urlbot = "https://discordbots.org/api/bots/385681784614027265/stats"
             data = {'server_count': len(self.bot.guilds)}
             r = requests.post(urlbot, params = data, headers = headers)
             if r.status_code == 200:
