@@ -18,7 +18,7 @@ class DiscordBotsOrgAPI:
         self.bot.loop.create_task(self.update_stats())
 
     async def update_stats(self):
-        """This function runs every 30 minutes to automatically update your server count"""
+        """This function runs every 1hrto automatically update your server count"""
 
         while True:
             logger.info('attempting to post server count')
