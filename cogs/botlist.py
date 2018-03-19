@@ -14,7 +14,7 @@ class BTList:
         headers = {'Authorization' : dbltoken}
         while True:
             logger.info('attempting to post server count')
-            urlbot = 'https://discordbots.org/api/bots/' + str(self.bot.user.id) + '/stats'
+            urlbot = 'https://discordbots.org/api/bots/{}/stats'.format(os.environ.get("Whynonid"))
             payload = {'server_count': len(self.bot.guilds)}
             async with aiohttp.ClientSession() as session:
                 async with session.post(urlbot, data = payload, headers = headers) as r:
