@@ -1,6 +1,6 @@
 import requests
-import discord
 import asyncio
+import discord
 from discord.ext import commands
 
 class DBList:
@@ -16,10 +16,10 @@ class DBList:
             urlbot = "https://discordbots.org/api/bots/%s/stats"%(id_self)
             data = {'server_count': len(self.bot.guilds)}
             r = requests.post(urlbot, params = data, headers = headers)
-                if r.status_code == 200:
-                    print("Posted count!")
-                else:
-                    print("ERROR!")
+            if r.status_code == 200:
+                print("Posted count!")
+            else:
+                print("ERROR!")
             await asyncio.sleep(1800)
 
 def setup(bot):
