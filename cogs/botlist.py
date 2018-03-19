@@ -1,35 +1,25 @@
-import dbl
+import requests
 import discord
 from discord.ext import commands
-import os
-import aiohttp
-import asyncio
-import logging
 
-
-class DiscordBotsOrgAPI:
-    """Handles interactions with the discordbots.org API"""
-
-    def __init__(self, bot):
+class DBList:
+    def __init__(self,bot):
         self.bot = bot
-        self.token = '{}'.format(os.environ.get("dbltokenT"))
-        self.dblpy = dbl.Client(self.bot, self.token)
         self.bot.loop.create_task(self.update_stats())
 
     async def update_stats(self):
-        """This function runs every 30 minutes to automatically update your server count"""
-
+        dbltoken = "{}".format(os.environ.get("dbltokenT"))
+        headers = {"Authorization": dbltoken}
         while True:
-            logger.info('attempting to post server count')
-            try:
-                await self.dblpy.post_server_count()
-                logger.info('posted server count ({})'.format(len(self.bot.guilds)))
-            except Exception as e:
-                logger.exception('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
+            id_self = str(self.bot.user.id)
+            urlbot = "https://discordbots.org/api/bots/%s/stats"%(id_self)
+            data = {'server_count': len(self.bot.guilds)}
+            r = requests.post(urlbot, params = data, headers = headers)
+                if r.status_code == 200:
+                    print("Posted count!")
+                else:
+                    print("ERROR!")
             await asyncio.sleep(1800)
 
-
 def setup(bot):
-    global logger
-    logger = logging.getLogger('bot')
-    bot.add_cog(DiscordBotsOrgAPI(bot))
+    bot.add_cog(DBList(bot))
