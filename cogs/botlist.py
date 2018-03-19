@@ -29,7 +29,7 @@ class DiscordBotsOrgAPI:
                     else:
                         print(r.status)
                 await session.close()
-            await asyncio.sleep(3600)
+            await asyncio.sleep(1800)
 
 
 def setup(bot):
