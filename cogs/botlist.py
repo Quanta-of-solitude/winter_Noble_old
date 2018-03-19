@@ -14,13 +14,13 @@ class DBList:
         headers = {"Authorization": dbltoken}
         while True:
             
-            urlbot = "https://discordbots.org/api/bots/385681784614027265/stats"
+            urlbot = "https://discordbots.org/api/bots/385681784614027265"
             data = {'server_count': len(self.bot.guilds)}
             r = requests.post(urlbot, params = data, headers = headers)
             if r.status_code == 200:
                 print("Posted count!")
             else:
-                print("ERROR!")
+                print(r.status_code)
             await asyncio.sleep(1800)
 
 def setup(bot):
