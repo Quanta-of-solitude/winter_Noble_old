@@ -1,5 +1,5 @@
 '''
-Actual Cog from Selfbot, edited by Quanta#5556 (N)
+by Noble#5556
 
 PS: Help command shouldn't be here, but ¯\_(ツ)_/¯
 '''
@@ -54,13 +54,13 @@ class Utility:
     async def help(self, ctx):
         general_commands = "\n`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `title`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
         other_games = "\n`osu`"
         music_command = "\n`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "\n`translator`"
         miscellaneous_commands = "\n`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
-        welcome_commands = "\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
+        welcome_commands = "**\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
         anime_commands = "`\nanisearch`, `anidata`"
         further_help = "`\nexpand[command]`"
         #await ctx.send("**WILL BE DEVELOPED FURTHER:**\n"+"```\n"+help_cmd+"```")
@@ -261,6 +261,26 @@ class Utility:
         elif args == 'char':
             info = "Gives aq3d character details."
             usage = "w!char [someone]. Eg: w!char test"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'aq3dtitles':
+            info = "Gives a list of aq3d titles/achievements present at the moment in the game."
+            usage = "w!aq3dtitles"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'title':
+            info = "Gives info about a title/achievement."
+            usage = "w!title [titlename]. Eg: w!title Brutalcorn"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
