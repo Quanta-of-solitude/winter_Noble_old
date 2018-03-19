@@ -114,27 +114,46 @@ class mmorpg:
                 badges.append(fmf)
                 klma = '\n'.join(badges)
             info['cl'] = c['alt']
+
             info['clpic'] = 'https://game.aq3d.com' + c['src']
             #loki = lolewii+"Class:"+"\n"+info['cl']+"\n"+"\n"+" **__Badges__** \n"+" **"+klma+"**"
             player_name = lolewii
             player_class = info['cl']
             player_badges = klma
             #return {"user": loki,"pic": info['clpic']}
+            data = f"**Name:** {player_name}\n"
+            data += f"**Class:** {player_class}\n\n"
+            data += f"**Badges:**\n\n{player_badges}"
+            try:
+                character_embed = discord.Embed(title = "{}".format(player_name), url = link)
+                character_embed.set_author(name = "Character Info:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png" )
+                character_embed.add_field(name = "**Class:**", value = player_class, inline = True)
+                character_embed.add_field(name = "**__Badges__**", value = player_badges, inline = False)
+                character_embed.set_image(url = "{}".format(info['clpic']))
+                character_embed.color=discord.Colour.red()
+                await ctx.send(embed = character_embed)
+            except:
 
-            character_embed = discord.Embed(title = "{}".format(player_name), url = link)
-            character_embed.set_author(name = "Character Info:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png" )
-            character_embed.add_field(name = "**Class:**", value = player_class, inline = False)
-            character_embed.add_field(name = "**__Badges__**", value = player_badges, inline = False)
-            character_embed.set_image(url = "{}".format(info['clpic']))
-            character_embed.color=discord.Colour.red()
-            await ctx.send(embed = character_embed)
+                paginated_text = ctx.paginate(data)
+                for page in paginated_text:
+                    if page == paginated_text[-1]:
+                        em = discord.Embed(color= 0000, description = page)
+                        em.set_image(url = "{}".format(info['clpic']))
+                        out = await ctx.send(embed = em)
+                        break
+                    em = discord.Embed(color = 0000, description = page)
+                    em.set_image(url = "{}".format(info['clpic']))
+                    await ctx.send(embed = em)
+
             del player[:]
             del badges [:]
         except Exception as e:
+            print(e)
             try:
                 text_made = f"Name: {player_name}\nClass: {player_class}\n\nBadges:\n{player_badges}"
                 await ctx.send("__**Note:**__ This is being displayed like this because I am missing The **Embed Permission** in the server.\n"+"```"+text_made+"```")
             except Exception as err:
+                print(err)
                 await ctx.send("`-NONE FOUND-`")
 
     @commands.command(aliases=['aq3dservers','serveraq3d'])
