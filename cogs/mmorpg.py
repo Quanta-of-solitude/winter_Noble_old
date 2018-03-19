@@ -744,7 +744,67 @@ class mmorpg:
         except Exception as e:
             await ctx.send("`-None Found-`")
 
-#NON MMORPG SECTION
+    @commands.command()
+    async def aq3dtitles(self, ctx):
+        '''all titles'''
+        titles = []
+        url = "{}".format(os.environ.get("aq3dtitles"))
+        r = requests.get(url)
+        m = json.loads(r.content)
+        title_name = m[0]
+        count = 0
+        for x in title_name:
+            count +=1
+            titles.append("**"+str(count)+". "+x+"**")
+        title_list = '\n'.join(titles)
+        em = discord.Embed(color = 0000, description = title_list)
+        em.set_author(name = "List of Titles: ", icon_url  = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
+        em.add_field(name = "Note:", value = "For info about a title/achievement, do w!title [titlename] without []\nFor Eg: w!title Werewolf Pack T-Shirt", inline = False)
+        em.set_footer(text = "|Winter-Song", icon_url = self.bot.user.avatar_url)
+        em.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
+        await ctx.send(content = "**__Note__**: Not all of them are titles, some are achievements that gives you a title.", embed = em)
+
+    @commands.command()
+    async def title(self, ctx,*,title:str = None):
+        '''title detail'''
+        try:
+            if title == None:
+                await ctx.send("`-No Title Name Provided!-`")
+                return
+            all_titles = []
+            url = "{}".format(os.environ.get("aq3dtitles"))
+            r = requests.get(url)
+            m = json.loads(r.content)
+            title = title.lower()
+            titles = m[0]
+            for x in titles:
+                all_titles.append(x)
+            k = dict((k.lower(), v) for k,v in titles.items())
+            if title in k:
+                em = discord.Embed(color = 0000)
+                em.set_author(name = f"{title}: ", icon_url  = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
+                em.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
+                em.add_field(name = "Description", value = "{}".format(k[f"{title}"]["Description"]), inline = False)
+                em.set_image(url = "{}".format(k[f"{title}"]["get"]))
+                await ctx.send(embed = em)
+            else:
+
+                matching = [s for s in k if f"{title}" in s]
+                suggested_result = '\n'.join(matching)
+                #print(matching)
+                if not matching:
+                    em = discord.Embed(color = 0000, description = "**No such title/achievement found...**")
+                else:
+                    em = discord.Embed(color = 0000, description = "**No such title/achievement found...**")
+                    em.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
+                    em.add_field(name = "Did you mean:", value = "**"+suggested_result+"**",inline = False)
+                await ctx.send(embed = em)
+        except Exception as e:
+            print(e)
+            await ctx.send("`-Internal Error-`")
+
+
+#NON MMORPG SECTION--------------------------------------------------
     @commands.command()
     async def osu(self,ctx, *,user:str = None):
         '''osu data'''
