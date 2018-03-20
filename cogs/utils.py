@@ -54,13 +54,13 @@ class Utility:
     async def help(self, ctx):
         general_commands = "\n`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `title`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `mchar`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `mtitles`, `title`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
         other_games = "\n`osu`"
         music_command = "\n`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "\n`translator`"
         miscellaneous_commands = "\n`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
-        welcome_commands = "**\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
+        welcome_commands = "\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
         anime_commands = "`\nanisearch`, `anidata`"
         further_help = "`\nexpand[command]`"
         #await ctx.send("**WILL BE DEVELOPED FURTHER:**\n"+"```\n"+help_cmd+"```")
@@ -69,7 +69,7 @@ class Utility:
         em.set_author(name = "Help Menu",url = "https://winter-song-web.herokuapp.com/" ,icon_url = "http://bestanimations.com/Nature/winter/winter-snow-nature-animated-gif-27.gif")
         em.add_field(name = "1.General:", value = general_commands,inline = False)
         em.add_field(name = "2.Moderation: ", value = moderation_commands ,inline = False)
-        em.add_field(name = "3.AE: ", value = aq_commands ,inline = False)
+        em.add_field(name = "3.AE: ", value = "**__NOTE__**: If you can't view the full char page in mobile using `w!char` use `w!mchar` and Mobile users use `w!mtitles` for titles list instead of `w!aq3dtitles`\n\n"+aq_commands ,inline = False)
         em.add_field(name = "4.Other Games: ", value = other_games ,inline = False)
         em.add_field(name = "5.Music ", value = music_command ,inline = False)
         em.add_field(name = "6.Translator:", value = translator_commands, inline = False)
@@ -268,9 +268,29 @@ class Utility:
             em.colour = discord.Colour.green()
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
+        elif args == 'mchar':
+            info = "Gives aq3d character details. (Mobile Friendly)"
+            usage = "w!mchar [someone]. Eg: w!mchar test\n\n*This doesn't show the character class picture."
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
         elif args == 'aq3dtitles':
             info = "Gives a list of aq3d titles/achievements present at the moment in the game."
             usage = "w!aq3dtitles"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'mtitles':
+            info = "Gives a list of aq3d titles/achievements present at the moment in the game. (Mobile Friendly)"
+            usage = "w!mtitles"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
