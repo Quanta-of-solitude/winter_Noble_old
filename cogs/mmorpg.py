@@ -87,7 +87,7 @@ class mmorpg:
 
     @commands.command(aliases=['character'])
     async def char(self, ctx, *, args:str = None):
-        '''Finding the character page of the player'''
+        '''Finding the character page of the player (PC nice)'''
         try:
             player = []
             badges = []
@@ -151,10 +151,67 @@ class mmorpg:
             print(e)
             try:
                 text_made = f"Name: {player_name}\nClass: {player_class}\n\nBadges:\n{player_badges}"
-                await ctx.send("__**Note:**__ This is being displayed like this because I am missing The **Embed Permission** in the server.\n"+"```"+text_made+"```")
+                await ctx.send("__**Note:**__ This is being displayed like this because I am missing **Some required Permission** in the server.\n"+"```"+text_made+"```")
             except Exception as err:
                 print(err)
                 await ctx.send("`-NONE FOUND-`")
+
+
+    @commands.command(aliases=['mobilecharacter'])
+    async def mchar(self, ctx, *, args:str = None):
+        '''Finding the character page of the player (mobile version)'''
+        try:
+            player = []
+            badges = []
+            if args == None:
+                await ctx.send(content = "`Missing name`")
+                return
+            link = self.character_page_link
+            new_text = args.replace(' ','+')
+            link = link+new_text
+            info = {}
+            r = requests.get(link)
+            soup = BeautifulSoup(r.content, 'lxml')
+            g_data = soup.find_all("h3")
+            f_data = soup.find_all("div",{"class": "text-center nopadding"})
+            img_data = soup.findAll('img',alt=True,src = True)
+            c = soup.find("img", alt=True, src=re.compile(r'\/Content\/img\/char\/.+.png'))
+            await ctx.trigger_typing()
+            for n in f_data:
+                kjk = n.text
+                player.append(kjk)
+                lolewii = '\n'.join(player)
+            for h in g_data:
+                fmf = h.text
+                badges.append(fmf)
+                klma = '\n'.join(badges)
+            info['cl'] = c['alt']
+
+            info['clpic'] = 'https://game.aq3d.com' + c['src']
+            #loki = lolewii+"Class:"+"\n"+info['cl']+"\n"+"\n"+" **__Badges__** \n"+" **"+klma+"**"
+            player_name = lolewii
+            player_class = info['cl']
+            player_badges = klma
+            #return {"user": loki,"pic": info['clpic']}
+            data = f"-Character Info-\n\nName: {player_name}\n"
+            data += f"Class: {player_class}\n\n"
+            data += f"Badges:\n\n{player_badges}"
+            try:
+                out = await ctx.send("```\n"+data+"\n```")
+            except:
+                paginated_text = ctx.paginate(data)
+                for page in paginated_text:
+                    if page == paginated_text[-1]:
+                        out = await ctx.send(f'```\n{page}\n```')
+                        break
+                    await ctx.send(f'```\n{page}\n```')
+
+            del player[:]
+            del badges [:]
+        except Exception as e:
+            print(e)
+            await ctx.send("`-NONE FOUND-`")
+
 
     @commands.command(aliases=['aq3dservers','serveraq3d'])
     async def aq3dserver(self,ctx):
@@ -218,7 +275,7 @@ class mmorpg:
                     countr = "0"
             except Exception as e:
                 print(e)
-                countr = "None"
+                countr = "0"
             try:
                 countb = server_details[1]["UserCount"]
                 if countb:
@@ -227,7 +284,7 @@ class mmorpg:
                     countb = "0"
             except Exception as e:
                 print(e)
-                countb = "None"
+                countb = "0"
 
             try:
                 countp = rq_server["UserCount"]
@@ -237,7 +294,7 @@ class mmorpg:
                     countb = "0"
             except Exception as e:
                 print(e)
-                countp = "None"
+                countp = "0"
 
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
             data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
@@ -783,6 +840,34 @@ class mmorpg:
         em.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
         await ctx.send(content = "**__Note__**: Not all of them are titles, some are achievements that gives you a title.", embed = em)
 
+    @commands.command(aliases = ["mtitles"])
+    async def maq3dtitles(self, ctx):
+        '''all titles(mobile version)'''
+        titles = []
+        url = "{}".format(os.environ.get("aq3dtitles"))
+        r = requests.get(url)
+        m = json.loads(r.content)
+        title_name = m[0]
+        count = 0
+        for x in title_name:
+            count +=1
+            titles.append(str(count)+". "+x)
+        title_list = '\n'.join(titles)
+        data = f"-List of AQ3D Titles/Achievements-\n\nNote: Not all of them are titles, some are achievements that gives you a title!\n\n{title_list}\n\n"
+        data += "Note: For info about a title/achievement, do w!title [titlename] without []\nFor Eg: w!title Werewolf Pack T-Shirt"
+        try:
+            out = await ctx.send("```\n"+data+"\n```")
+        except:
+            paginated_text = ctx.paginate(data)
+            for page in paginated_text:
+                if page == paginated_text[-1]:
+                    out = await ctx.send(f'```\n{page}\n```')
+                    break
+                await ctx.send(f'```\n{page}\n```')
+
+
+
+
     @commands.command()
     async def title(self, ctx,*,title:str = None):
         '''title detail'''
@@ -821,6 +906,12 @@ class mmorpg:
         except Exception as e:
             print(e)
             await ctx.send("`-Internal Error-`")
+
+
+
+
+
+
 
 
 #NON MMORPG SECTION--------------------------------------------------
