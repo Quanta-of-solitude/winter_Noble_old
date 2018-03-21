@@ -78,7 +78,7 @@ class NewBot(commands.Bot):
     async def on_ready(self):
         '''SET THE UPTIME'''
         self.uptime = datetime.datetime.utcnow()
-        await self.change_presence(activity = discord.Game(name="w!help | ["+str(len(self.bot.guilds))+"]"))
+        await self.change_presence(activity = discord.Game(name="w!help | ["+str(len(bot.guilds))+"]"))
 
     async def on_command(self, ctx):
         cmd = ctx.command.qualified_name.replace(' ', '_')
