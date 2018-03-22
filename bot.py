@@ -93,7 +93,7 @@ class NewBot(commands.Bot):
 
     async def on_message(self, message):
         '''Ignore commands by self'''
-        if message.author.id == self.user.id:
+        if message.author.id == self.user.id or message.author.bot == True:
             return
         if 'discord.gg' in message.content:
             if message.guild.id == 356157029074862081 and message.channel.id != 356518005313765379:    #For Night Watch server- On Request
