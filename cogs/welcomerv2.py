@@ -366,7 +366,182 @@ class Welcomer:
             print(e)
             await ctx.send("`Error: Wrong Format!`")
 
+    @commands.command(aliases = ["wpreview", "previewwelcome", "welpreview"])
+    @commands.check(have_permissions)#to view the welcome
+    async def welview(self, ctx):
+        '''preview the welcome without joining'''
+        try:
+            url_toggle = self.toggle_url()
+            url_message = self.load_url()
+            url_type = self.msg_type()
+            is_bot = False
+            url_bg = self.set_bg()
+            server = ctx.guild
+            data_type = myjson.get(url_type)
+            data_type = json.loads(data_type)
+            data_message = myjson.get(url_message)
+            data_message = json.loads(data_message)
+            data_bg = myjson.get(url_bg)
+            data_bg = json.loads(data_bg)
+            msg = data_message["{}".format(server.id)]["msg"]
+            if "{}".format(server.id) in data_message:
 
+                if data_type["{}".format(server.id)]["msg_type"] == "pic":
+                    try:
+                        try:
+                            url_ser = "{}".format(data_bg["{}".format(server.id)]["link"])
+                            respon = requests.get(url_ser, stream=True)
+                            with open('ser.png', 'wb') as ou_file:
+                                shutil.copyfileobj(respon.raw, ou_file)
+                            del respon
+                        except Exception as e:
+                            print(e)
+                            url_ser = "https://cdn.discordapp.com/attachments/384512083552894979/395207826684772374/bg.jpg"
+                            respon = requests.get(url_ser, stream=True)
+                            with open('ser.png', 'wb') as ou_file:
+                                shutil.copyfileobj(respon.raw, ou_file)
+                            del respon
+                        img = Image.open("profile.png")
+                        new_im = Image.new("RGBA", (600,200))
+                        bg_w, bg_h = new_im.size
+                        other = Image.open("ser.png")
+                        other = other.resize((600, 200), PIL.Image.ANTIALIAS)
+                        other.save('resized_bg.jpg')
+                        others = Image.open("resized_bg.jpg")
+                        brightness = 0.5
+                        enhancer = ImageEnhance.Brightness(others)
+                        others = enhancer.enhance(brightness)
+                        new_im.paste(others,(0,0))
+                        img.thumbnail((75,75))
+                        new_im.paste(img,(42,65))
+                        font1 = ImageFont.truetype('arialbd.ttf', 25)
+                        font2 = ImageFont.truetype('Pacifico.ttf',20)
+                        font3 = ImageFont.truetype('Tabitha.ttf', 22)
+                        xoff, yoff = (10,5)
+                        d = ImageDraw.Draw(new_im)
+                        d.text((149, 31),"Welcome!", fill="white",font = font1)
+                        t = ImageDraw.Draw(new_im)
+                        t.text((137, 63),"Noble#5556", fill="white",font = font3)
+                        m = ImageDraw.Draw(new_im)
+                        print(len(msg))
+                        if len(msg)>50:
+                            msg = "Have Fun and Enjoy your time in here!"
+                        else:
+                            msg = data_message["{}".format(server.id)]["msg"]
+                        m.text((136, 80),"{}".format(msg), fill="white",font = font2)
+                        kk = ImageDraw.Draw(new_im)
+                        kk.text((137, 109),"Member Number: 1", fill="white",font = font2)
+                        if is_bot == True:
+                            is_bot = "Yes"
+                        else:
+                            is_bot = "No"
+                        bb = ImageDraw.Draw(new_im)
+                        bb.text((136, 134),"Bot: {}".format(is_bot), fill="white",font = font2)
+                        new_im.save("welcome_test.png")
+                        await ctx.send(content = "**This is the preview of the welcome you set.**",file=discord.File('welcome_test.png'))
+                    except Exception as e:
+                        print(e)
+                        await ctx.send("The image link might be invalid (not a valid .png/.jpg link) :sweat_smile:")
+
+                if data_type["{}".format(server.id)]["msg_type"] == "text":
+
+                    await ctx.send("`This is a preview of the welcome you set.`\n\n{}".format(msg)+"\n\n**Member:** <@385681784614027265>"+"\n**Server:** **{}**".format(ctx.guild.name)+"\n**Member No:** 1"+"\n**Bot:** {}".format(is_bot))
+            else:
+                await ctx.send("You haven't set a welcome message using me yet :smile:")
+        except Exception as e:
+            print(e)
+
+    @commands.command()#owner command only
+    async def preview(self, ctx, *,server:str = None):
+        '''to preview welcome on any server'''
+        if ctx.author.id == 280271578850263040:
+            if server == None:
+                await ctx.send("You missed to give an id!")
+                return
+            try:
+                url_toggle = self.toggle_url()
+                url_message = self.load_url()
+                url_type = self.msg_type()
+                is_bot = False
+                url_bg = self.set_bg()
+                serrv = self.bot.get_guild(int(server))
+                server = server
+                data_type = myjson.get(url_type)
+                data_type = json.loads(data_type)
+                data_message = myjson.get(url_message)
+                data_message = json.loads(data_message)
+                data_bg = myjson.get(url_bg)
+                data_bg = json.loads(data_bg)
+                msg = data_message["{}".format(server)]["msg"]
+                if "{}".format(server) in data_message:
+
+                    if data_type["{}".format(server)]["msg_type"] == "pic":
+
+                        try:
+                            try:
+                                url_ser = "{}".format(data_bg["{}".format(server.id)]["link"])
+                                respon = requests.get(url_ser, stream=True)
+                                with open('ser.png', 'wb') as ou_file:
+                                    shutil.copyfileobj(respon.raw, ou_file)
+                                del respon
+                            except Exception as e:
+                                print(e)
+                                url_ser = "https://cdn.discordapp.com/attachments/384512083552894979/395207826684772374/bg.jpg"
+                                respon = requests.get(url_ser, stream=True)
+                                with open('ser.png', 'wb') as ou_file:
+                                    shutil.copyfileobj(respon.raw, ou_file)
+                                del respon
+                            img = Image.open("profile.png")
+                            new_im = Image.new("RGBA", (600,200))
+                            bg_w, bg_h = new_im.size
+                            other = Image.open("ser.png")
+                            other = other.resize((600, 200), PIL.Image.ANTIALIAS)
+                            other.save('resized_bg.jpg')
+                            others = Image.open("resized_bg.jpg")
+                            brightness = 0.5
+                            enhancer = ImageEnhance.Brightness(others)
+                            others = enhancer.enhance(brightness)
+                            new_im.paste(others,(0,0))
+                            img.thumbnail((75,75))
+                            new_im.paste(img,(42,65))
+                            font1 = ImageFont.truetype('arialbd.ttf', 25)
+                            font2 = ImageFont.truetype('Pacifico.ttf',20)
+                            font3 = ImageFont.truetype('Tabitha.ttf', 22)
+                            xoff, yoff = (10,5)
+                            d = ImageDraw.Draw(new_im)
+                            d.text((149, 31),"Welcome!", fill="white",font = font1)
+                            t = ImageDraw.Draw(new_im)
+                            t.text((137, 63),"Noble#5556", fill="white",font = font3)
+                            m = ImageDraw.Draw(new_im)
+                            print(len(msg))
+                            if len(msg)>50:
+                                msg = "Have Fun and Enjoy your time in here!"
+                            else:
+                                msg = data_message["{}".format(server)]["msg"]
+                            m.text((136, 80),"{}".format(msg), fill="white",font = font2)
+                            kk = ImageDraw.Draw(new_im)
+                            kk.text((137, 109),"Member Number: 1", fill="white",font = font2)
+                            if is_bot == True:
+                                is_bot = "Yes"
+                            else:
+                                is_bot = "No"
+                            bb = ImageDraw.Draw(new_im)
+                            bb.text((136, 134),"Bot: {}".format(is_bot), fill="white",font = font2)
+                            new_im.save("welcome_test.png")
+                            await ctx.send(content = f"**The Server is {serrv.name}**",file=discord.File('welcome_test.png'))
+                        except Exception as e:
+                            print(e)
+                            await ctx.send("The image link might be invalid (not a valid .png/.jpg link) :sweat_smile:")
+
+                    if data_type["{}".format(server)]["msg_type"] == "text":
+
+                        await ctx.send("`This is a preview of the welcome they set.`\n\n{}".format(msg)+"\n\n**Member:** <@385681784614027265>"+"\n**Server:** **{}**".format(serrv.name)+"\n**Member No:** 1"+"\n**Bot:** {}".format(is_bot))
+                else:
+                    await ctx.send("They haven't set a welcome message using me yet :smile:")
+            except Exception as e:
+                print(e)
+
+#Events========================================================================================================================================
     async def on_member_join(self,member):
         '''welcome!'''
         try:
