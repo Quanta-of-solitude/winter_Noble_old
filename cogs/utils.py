@@ -60,7 +60,7 @@ class Utility:
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "\n`translator`"
         miscellaneous_commands = "\n`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
-        welcome_commands = "\n`welcomemsg`, `togglewel`, `leavemsg`, `toggleleave`, `settype`, `setbg`"
+        welcome_commands = "\n`welcomemsg`, `togglewel`, `welview`,`leavemsg`, `toggleleave`, `settype`, `setbg`"
         anime_commands = "`\nanisearch`, `anidata`"
         further_help = "`\nexpand[command]`"
         #await ctx.send("**WILL BE DEVELOPED FURTHER:**\n"+"```\n"+help_cmd+"```")
@@ -529,6 +529,16 @@ class Utility:
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             em.set_image(url = "https://image.ibb.co/jEVrX6/current.png")
             await ctx.send(embed = em,content = "**Currently:**\n")
+        elif args == 'welview':
+            info = "Have a preview of the welcome message that you set using me!"
+            usage = "w!welview\n**Aliases:** welpreview\n\nw!preview [id] for owner (incase I forget XD)"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
         elif args == 'leavemsg':
             info = "Set a leave message, Gets triggered when a member is removed or leaves the guild. Picture leaves might be coming next, after this is implemented successfully."
             usage = """The author has to have admin permissions (not the bot) i.e The Server owner or one with Administrative Permission.\n**Command:** w!leavemsg "<your_message>" "<channel_id where to send it>"\n\n**__NOTE:__** You don't need to add server name in the message, it will be done automatically.\n\n**__Additional:__** without the channel id, it will post to the channel where the command was set.\n to toggle on/off of the welcome message, check **w!expand toggleleave**.\n\n**__PS:__** The quotations in "<your_message>" "<channel_id where to send it>" are necessary."""
