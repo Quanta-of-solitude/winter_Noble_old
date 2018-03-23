@@ -179,10 +179,12 @@ class Information:
         total_members = sum(1 for _ in self.bot.get_all_members())
         total_online = len({m.id for m in self.bot.get_all_members() if m.status is discord.Status.online})
         total_unique = len(self.bot.users)
-        description = "```I am a simple bot designed for general purposes!\nFocused mainly in AE section at the moment.Sadly, I am not complete yet, but thanks for using me, I will get better with time :D```"
-        embed.add_field(name='Owners:', value='```Made by: Noble#5556\nID: 280271578850263040\n\nMaintained by: Hydra#9574\nID: 283413165381910539```', inline = False)
+        description = "```I am a simple bot designed for general purposes!\nFocused mainly in AE section at the moment. Not a 100% complete bot, ongoing updates daily and adding features :D\nView my help command using w!help```"
+        library_used = "```discord.py @rewrite```"
+        embed.add_field(name='Owner:', value='```Made by: Noble#5556\nID: 280271578850263040\n```', inline = False)
         embed.add_field(name = 'Description:', value = description, inline = False)
         embed.add_field(name='Total Members:', value=f'{total_members}', inline = False)
+        embed.add_field(name='Using:', value=library_used, inline = False)
         memory_usage = self.bot.process.memory_full_info().uss / 1024**2
         cpu_usage = self.bot.process.cpu_percent() / psutil.cpu_count()
         embed.add_field(name='Process: ', value=f'{memory_usage:.2f} MiB\n{cpu_usage:.2f}% CPU', inline = False)
