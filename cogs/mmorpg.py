@@ -129,9 +129,10 @@ class mmorpg:
                 character_embed.set_author(name = "Character Info:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png" )
                 character_embed.add_field(name = "**Class:**", value = player_class, inline = True)
                 character_embed.add_field(name = "**__Badges__**", value = player_badges, inline = False)
+                character_embed.set_footer(text = "|Char-Page, w!mchar for mobile friendly|",icon_url = self.bot.user.avatar_url)
                 character_embed.set_image(url = "{}".format(info['clpic']))
                 character_embed.color=discord.Colour.red()
-                await ctx.send(embed = character_embed)
+                await ctx.send(content = "**Character-Page. For title Page use w!titles []**",embed = character_embed)
             except:
 
                 paginated_text = ctx.paginate(data)
@@ -139,10 +140,12 @@ class mmorpg:
                     if page == paginated_text[-1]:
                         em = discord.Embed(color= 0000, description = page)
                         em.set_image(url = "{}".format(info['clpic']))
+                        em.set_footer(text = "|Char-Page, w!mchar for mobile friendly.|",icon_url = self.bot.user.avatar_url)
                         out = await ctx.send(embed = em)
                         break
                     em = discord.Embed(color = 0000, description = page)
                     em.set_image(url = "{}".format(info['clpic']))
+                    em.set_footer(text = "|Char-Page, w!mchar for mobile friendly|",icon_url = self.bot.user.avatar_url)
                     await ctx.send(embed = em)
 
             del player[:]
@@ -907,7 +910,72 @@ class mmorpg:
             print(e)
             await ctx.send("`-Internal Error-`")
 
+    @commands.command()
+    async def titles(self,ctx, *,nameplayer:str = None):
+        '''get all titles of a player'''
+        try:
+            if nameplayer == None:
+                await ctx.send("`-No player name provided-`")
+                return
+            await ctx.trigger_typing()
+            all_badges = []
+            player_titles = []
+            player= []
+            link = self.character_page_link
+            new_text = nameplayer.replace(' ','+')
+            link = link+new_text
+            r = requests.get(link)
+            url = "{}".format(os.environ.get("badgetitleconvert"))
+            rc = requests.get(url)
+            conversion = json.loads(rc.content)
+            conversion = conversion[0]
+            soup = BeautifulSoup(r.content, 'lxml')
+            g_data = soup.find_all("h3")
+            f_data = soup.find_all("div",{"class": "text-center nopadding"})
+            for h in g_data:
+                fmf = h.text
+                all_badges.append(fmf)
 
+            for n in f_data:
+                kjk = n.text
+                player.append(kjk)
+                namelevel = '\n'.join(player)
+
+
+            test = list(conversion.keys())
+            for x in test:
+                for y in all_badges:
+                    if x == y:
+                        player_titles.append(conversion[f"{x}"])
+
+            player0titles = '\n'.join(player_titles)
+            data = f"**Name:** {namelevel}\n"
+            data += f"**Titles:**\n\n{player0titles}"
+
+            try:
+                character_embed = discord.Embed(title = "{}".format(namelevel), url = link, color = 0000)
+                character_embed.set_author(name = "Character Titles:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png")
+                character_embed.add_field(name = "**__Titles__**", value = player0titles, inline = False)
+                character_embed.set_footer(text = "|Title-Page, use w!char [] for char page.|",icon_url = self.bot.user.avatar_url)
+                character_embed.color=discord.Colour.red()
+                await ctx.send(embed = character_embed)
+            except:
+                paginated_text = ctx.paginate(data)
+                for page in paginated_text:
+                    if page == paginated_text[-1]:
+                        em = discord.Embed(color= 0000, description = page)
+                        out = await ctx.send(embed = em)
+                        break
+                    em = discord.Embed(color = 0000, description = page)
+                    await ctx.send(embed = em)
+        except Exception as e:
+            print(e)
+            try:
+                text_made = f"Name: {player_name}\nClass: {player_class}\n\nBadges:\n{player_badges}"
+                await ctx.send("__**Note:**__ This is being displayed like this because I am missing **Some Required Permission** in the server.\n"+"```"+text_made+"```")
+            except Exception as err:
+                print(err)
+                await ctx.send("`-NONE FOUND-`")
 
 
 
