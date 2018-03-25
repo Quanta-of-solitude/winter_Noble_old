@@ -54,7 +54,7 @@ class Utility:
     async def help(self, ctx):
         general_commands = "\n`user`, `server`, `help` , `invite`, `about`, `avatar`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `mchar`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `mtitles`, `title`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `mchar`, `titles`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `mtitles`, `title`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
         other_games = "\n`osu`"
         music_command = "\n`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
@@ -260,7 +260,17 @@ class Utility:
             await ctx.send(embed = em)
         elif args == 'char':
             info = "Gives aq3d character details."
-            usage = "w!char [someone]. Eg: w!char test"
+            usage = "w!char [someone]. Eg: w!char test\nNot all badges appear on mobile, so use w!mchar instead! :D"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'titles':
+            info = "Gives aq3d character titles!"
+            usage = "w!titles [someone]. Eg: w!titles test\nThis is not char page, use w!char for charpage."
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
