@@ -130,6 +130,7 @@ class mmorpg:
                 character_embed.add_field(name = "**Class:**", value = player_class, inline = True)
                 character_embed.add_field(name = "**__Badges__**", value = player_badges, inline = False)
                 character_embed.set_footer(text = "|Char-Page, w!mchar for mobile friendly|",icon_url = self.bot.user.avatar_url)
+                character_embed.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
                 character_embed.set_image(url = "{}".format(info['clpic']))
                 character_embed.color=discord.Colour.red()
                 await ctx.send(content = "**Character-Page. For title Page use w!titles []**",embed = character_embed)
@@ -140,11 +141,13 @@ class mmorpg:
                     if page == paginated_text[-1]:
                         em = discord.Embed(color= 0000, description = page)
                         em.set_image(url = "{}".format(info['clpic']))
+                        em.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
                         em.set_footer(text = "|Char-Page, w!mchar for mobile friendly.|",icon_url = self.bot.user.avatar_url)
                         out = await ctx.send(embed = em)
                         break
                     em = discord.Embed(color = 0000, description = page)
                     em.set_image(url = "{}".format(info['clpic']))
+                    em.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
                     em.set_footer(text = "|Char-Page, w!mchar for mobile friendly|",icon_url = self.bot.user.avatar_url)
                     await ctx.send(embed = em)
 
@@ -943,6 +946,13 @@ class mmorpg:
 
 
             test = list(conversion.keys())
+            if len(all_badges) == 1:
+                character_embed = discord.Embed(title = "{}".format(namelevel), url = link, color = 0000)
+                character_embed.set_author(name = "Character Titles:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png")
+                character_embed.add_field(name = "**__Titles__**", value = "No Title", inline = False)
+                character_embed.set_footer(text = "|Title-Page, use w!char [] for char page.|",icon_url = self.bot.user.avatar_url)
+                await ctx.send(embed = character_embed)
+                return
             for x in test:
                 for y in all_badges:
                     if x == y:
@@ -955,23 +965,27 @@ class mmorpg:
             try:
                 character_embed = discord.Embed(title = "{}".format(namelevel), url = link, color = 0000)
                 character_embed.set_author(name = "Character Titles:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png")
-                character_embed.add_field(name = "**__Titles__**", value = player0titles, inline = False)
+                character_embed.add_field(name = "**__Titles__**", value = "No Title\n"+player0titles, inline = False)
+                character_embed.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
                 character_embed.set_footer(text = "|Title-Page, use w!char [] for char page.|",icon_url = self.bot.user.avatar_url)
-                character_embed.color=discord.Colour.red()
-                await ctx.send(embed = character_embed)
+                await ctx.send(content = "**Player Title Page, use w!char [] for char page!**",embed = character_embed)
             except:
                 paginated_text = ctx.paginate(data)
                 for page in paginated_text:
                     if page == paginated_text[-1]:
                         em = discord.Embed(color= 0000, description = page)
+                        em.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
+                        em.set_footer(text = "|Title-Page, use w!char [] for char page.|",icon_url = self.bot.user.avatar_url)
                         out = await ctx.send(embed = em)
                         break
                     em = discord.Embed(color = 0000, description = page)
+                    em.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
+                    em.set_footer(text = "|Title-Page, use w!char [] for char page.|",icon_url = self.bot.user.avatar_url)
                     await ctx.send(embed = em)
         except Exception as e:
             print(e)
             try:
-                text_made = f"Name: {player_name}\nClass: {player_class}\n\nBadges:\n{player_badges}"
+                text_made = f"Name: {namelevel}\n\n\nTitles:\n{player0titles}"
                 await ctx.send("__**Note:**__ This is being displayed like this because I am missing **Some Required Permission** in the server.\n"+"```"+text_made+"```")
             except Exception as err:
                 print(err)
