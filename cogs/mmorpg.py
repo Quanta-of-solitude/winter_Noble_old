@@ -228,12 +228,12 @@ class mmorpg:
             soup = BeautifulSoup(rw.content, 'lxml')
             g= soup.find("p").get_text()
             server_details = json.loads(g)
-            link2 = "{}".format(os.environ.get("aq3d_ptr"))
-            rwp = requests.get(link2)
-            serverp_details = json.loads(rwp.content)
-            rq_server = serverp_details[0]
+            #link2 = "{}".format(os.environ.get("aq3d_ptr"))
+            #rwp = requests.get(link2)
+            #serverp_details = json.loads(rwp.content)
+            #rq_server = serverp_details[0]
             #print(rq_server)
-            try:
+            '''try:
                 serverp_state = rq_server["State"]
 
                 if serverp_state == True:
@@ -244,7 +244,7 @@ class mmorpg:
                     serverp_state = "**Offline**"
             except Exception as e:
                 print(e)
-                serverp_state = "**Offline: PTR is DOWN!**"
+                serverp_state = "**Offline: PTR is DOWN!**"'''
 
             await ctx.trigger_typing()
 
@@ -273,7 +273,7 @@ class mmorpg:
                 print(e)
                 server2_state = "**Unknown**"
 
-            try:
+            '''try:
                 countr = server_details[0]["UserCount"]
                 if countr:
                     countr = server_details[0]["UserCount"]
@@ -300,19 +300,19 @@ class mmorpg:
                     countb = "0"
             except Exception as e:
                 print(e)
-                countp = "0"
+                countp = "0"'''
 
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
-            data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
+            #data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server1_state)
             data += "Server Name: **{}**\n".format(server_details[1]["Name"])
-            data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
+            #data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server2_state)
-            data +="\n\n__**PTR Details**__\n\n"
+            '''data +="\n\n__**PTR Details**__\n\n"
             data += "Server Name: **{}**\n".format(rq_server["Name"])
             data +="Count: {}/{}\n".format(countp,rq_server["MaxUsers"])
             data +="Status: %s\n\n\n\n"%(serverp_state)
-            data +="**Help:** [How to access ptr?](https://aq3d.com/news/ptr/)"
+            data +="**Help:** [How to access ptr?](https://aq3d.com/news/ptr/)"'''
             server_embed = discord.Embed(description = data)
             server_embed.set_author(name = "Server Details:")
             server_embed.set_thumbnail(url = "https://www.aq3d.com/media/1507/aq3d-full-logo760.png")
