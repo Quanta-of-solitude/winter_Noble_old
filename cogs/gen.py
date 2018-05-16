@@ -87,6 +87,7 @@ class Gen:
     async def ter(self, ctx, *, args:str = None):
         if args == None:
             return
+        await ctx.trigger_typing()
         args = args.replace(" ", "%20")
         try:
             data = {
