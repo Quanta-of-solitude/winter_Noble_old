@@ -635,7 +635,7 @@ class Welcomer:
                         await member.add_roles(role)
                 except Exception as e:
                     pass
-            elif "{}".format(server.id) in data_message and data_toggle["{}".format(server.id)]["set_welcome"] == "on" and data_type["{}".format(server.id)]["msg_type"] == "text":
+            elif "{}".format(server.id) in data_message and data_toggle["{}".format(server.id)]["set_welcome"] == "on" and data_type["{}".format(server.id)]["msg_type"] == "text" or not data_type["{}".format(server.id)]:
                 channel_id = data_message["{}".format(server.id)]["channel_id"]
                 msg = data_message["{}".format(server.id)]["msg"]
                 channel = self.bot.get_channel(int(channel_id))
