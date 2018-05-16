@@ -21,7 +21,14 @@ class Gen:
     def __init__(self, bot):
         self.bot = bot
         self.client = discord.Client()
+        datas = {
+            'user': "{}".format(os.environ.get("clever_user")),
+            'key': "{}".format(os.environ.get("cleverbot_key")),
+            'nick': "{}".format(os.environ.get("cl_nicker"))
+        }
 
+        url = "{}".format(os.environ.get("cl_init"))
+        r = requests.post(url, json = datas)
 
 
     @property
@@ -39,19 +46,6 @@ class Gen:
         links = ["http://i.imgur.com/sW3RvRN.gif", "http://i.imgur.com/gdE2w1x.gif", "http://i.imgur.com/zpbtWVE.gif", "http://i.imgur.com/ZQivdm1.gif", "http://i.imgur.com/MWZUMNX.gif"]
         choice_made= random.choice(links)
         return choice_made
-
-    @property
-    def cleverbot_Key(self):
-
-        with open("data/config.json") as f:
-            cl_key = json.load(f)
-            if cl_key["cleverbot_key"] == "api_key_here":
-                key_cl = os.environ.get("cleverbot_key")
-            else:
-                key_cl = cl_key["cleverbot_key"]
-
-        return key_cl
-
 
 
     @commands.command()
@@ -93,13 +87,24 @@ class Gen:
     async def ter(self, ctx, *, args:str = None):
         if args == None:
             return
-        cl_key = self.cleverbot_Key
         args = args.replace(" ", "%20")
-        url = "http://www.cleverbot.com/getreply?key={0}&input={1}".format(cl_key,args)
-        r = requests.get(url)
-        reply = json.loads(r.content)
-        reply = reply["output"]
-        await ctx.send(reply)
+        try:
+            data = {
+                'user': "{}".format(os.environ.get("clever_user")),
+                'key': "{}".format(os.environ.get("cleverbot_key")),
+                'nick': "{}".format(os.environ.get("cl_nicker")),
+                'text': args
+                }
+                url = "{}".format(os.environ.get("cl_querytalk"))
+                r = requests.post(url, json = data)
+                #print(r)
+            reply = json.loads(r.content)
+            #print(reply)
+            reply = reply["response"]
+            await ctx.send(reply)
+        except Exception as e:
+            await ctx.send("`Internal chatbot error, sorry\n\n      -Noble`")
+            print(e)
 
     @commands.command(aliases=['8ball','eightball'])
     async def eball(self, ctx, *, args:str = None):
