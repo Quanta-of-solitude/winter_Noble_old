@@ -273,7 +273,7 @@ class mmorpg:
                 print(e)
                 server2_state = "**Unknown**"
 
-            '''try:
+            try:
                 countr = server_details[0]["UserCount"]
                 if countr:
                     countr = server_details[0]["UserCount"]
@@ -292,7 +292,7 @@ class mmorpg:
                 print(e)
                 countb = "0"
 
-            try:
+            '''try:
                 countp = rq_server["UserCount"]
                 if countp:
                     countp = rq_server["UserCount"]
@@ -303,13 +303,13 @@ class mmorpg:
                 countp = "0"'''
 
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
-            #data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
+            data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server1_state)
             data += "Server Name: **{}**\n".format(server_details[1]["Name"])
-            #data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
+            data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server2_state)
-            '''data +="\n\n__**PTR Details**__\n\n"
-            data += "Server Name: **{}**\n".format(rq_server["Name"])
+            data +="\n__**Total Players: {}**__".format(int(countr)+int(countb))
+            '''data += "Server Name: **{}**\n".format(rq_server["Name"])
             data +="Count: {}/{}\n".format(countp,rq_server["MaxUsers"])
             data +="Status: %s\n\n\n\n"%(serverp_state)
             data +="**Help:** [How to access ptr?](https://aq3d.com/news/ptr/)"'''
