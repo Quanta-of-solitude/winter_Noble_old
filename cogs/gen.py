@@ -95,9 +95,9 @@ class Gen:
                 'nick': "{}".format(os.environ.get("cl_nicker")),
                 'text': args
                 }
-                url = "{}".format(os.environ.get("cl_querytalk"))
-                r = requests.post(url, json = data)
-                #print(r)
+            url = "{}".format(os.environ.get("cl_querytalk"))
+            r = requests.post(url, json = data)
+            #print(r)
             reply = json.loads(r.content)
             #print(reply)
             reply = reply["response"]
