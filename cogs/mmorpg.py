@@ -308,7 +308,7 @@ class mmorpg:
             data += "Server Name: **{}**\n".format(server_details[1]["Name"])
             data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
             data +="Status: %s\n\n"%(server2_state)
-            data +="\n__**Total Players: {}**__".format(int(countr)+int(countb))
+            data +="\n__**Total Players: {}**__\n\nuse w!aqs <-shorthand".format(int(countr)+int(countb))
             '''data += "Server Name: **{}**\n".format(rq_server["Name"])
             data +="Count: {}/{}\n".format(countp,rq_server["MaxUsers"])
             data +="Status: %s\n\n\n\n"%(serverp_state)
