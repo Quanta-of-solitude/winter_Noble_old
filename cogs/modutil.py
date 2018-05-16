@@ -6,7 +6,6 @@ from urllib.parse import urlparse
 import datetime
 import asyncio
 import random
-import pip
 import os
 import io
 
