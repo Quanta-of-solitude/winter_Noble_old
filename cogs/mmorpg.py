@@ -219,7 +219,7 @@ class mmorpg:
             await ctx.send("`-NONE FOUND-`")
 
 
-    @commands.command(aliases=['aq3dservers','serveraq3d'])
+    @commands.command(aliases=['aq3dservers','serveraq3d','aqs'])
     async def aq3dserver(self,ctx):
         '''Details about aq3d Servers and ptr'''
         try:
