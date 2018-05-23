@@ -95,17 +95,7 @@ class NewBot(commands.Bot):
         '''Ignore commands by self'''
         if message.author.id == self.user.id or message.author.bot == True:
             return
-        if 'discord.gg' in message.content:
-            if message.guild.id == 356157029074862081 and message.channel.id != 356518005313765379:    #For Night Watch server- On Request
-                try:
-                    await asyncio.sleep(2)
-                    await message.delete()
-                    await asyncio.sleep(2)
-                    alert = await message.channel.send("{} Please, post your invite links only in <#356518005313765379>\n:smile:".format(message.author.mention))
-                    await asyncio.sleep(20)
-                    await alert.delete()
-                except Exception as e:
-                    pass
+        
         await self.process_commands(message)
 
     def get_server(self, id):
