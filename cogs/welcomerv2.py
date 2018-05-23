@@ -230,7 +230,7 @@ class Welcomer:
         url = self.toggle_url()
         data = myjson.get(url)
         data = json.loads(data)
-        accepted = ["on", "of"]
+        accepted = ["on", "off"]
         if args == None:
             if "{}".format(ctx.guild.id) not in data:
                 data["{}".format(ctx.guild.id)] = {}
