@@ -4,7 +4,7 @@ import discord
 from bs4 import BeautifulSoup as parse
 import requests
 
-class weeb:
+class weeb(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
