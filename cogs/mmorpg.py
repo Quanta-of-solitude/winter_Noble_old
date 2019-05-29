@@ -17,7 +17,7 @@ import locale
 from bs4 import BeautifulSoup
 locale.setlocale(locale.LC_ALL, 'en_US.utf8')
 
-class mmorpg:
+class mmorpg(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
     @property
