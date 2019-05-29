@@ -13,7 +13,7 @@ from PIL import Image,ImageFilter,ImageDraw,ImageFont,ImageOps, ImageEnhance
 import asyncio
 
 
-class Welcomer:
+class Welcomer(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
