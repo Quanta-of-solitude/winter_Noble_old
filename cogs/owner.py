@@ -14,7 +14,7 @@ class Ownes(commands.Cog):
         return (ctx.author.id == 280271578850263040 or ctx.author.id == 283413165381910539)
     @commands.command(name='load', hidden=True)
     @commands.check(is_owner)
-    async def cog_load(self, ctx, *, cog: str):
+    async def loadin(self, ctx, *, cog: str):
         """load module using cogs.module"""
 
         try:
@@ -26,7 +26,7 @@ class Ownes(commands.Cog):
 
     @commands.command(name='unload', hidden=True)
     @commands.check(is_owner)
-    async def cog_unload(self, ctx, *, cog: str):
+    async def unloadin(self, ctx, *, cog: str):
         """Unload using cogs.module"""
 
         try:
@@ -38,7 +38,7 @@ class Ownes(commands.Cog):
 
     @commands.command(name='reload', hidden=True)
     @commands.check(is_owner)
-    async def cog_reload(self, ctx, *, cog: str):
+    async def reloadin(self, ctx, *, cog: str):
         """reload module , use cogs.module"""
 
         try:
