@@ -10,7 +10,7 @@ import json
 import uuid
 import myjson
 
-class Datas:
+class Datas(commands.Cog):
     '''Get all datas'''
     def __init__(self, bot):
         self.bot = bot
