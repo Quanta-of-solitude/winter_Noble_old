@@ -17,7 +17,7 @@ from discord.ext import commands
 import collections
 bot = discord.Client()
 c = collections.Counter()
-class Gen:
+class Gen(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.client = discord.Client()
