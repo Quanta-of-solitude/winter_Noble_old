@@ -14,7 +14,7 @@ from lxml import etree
 from bs4 import BeautifulSoup
 import requests
 
-class Searches:
+class Searches(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
