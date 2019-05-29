@@ -11,7 +11,7 @@ import string
 
 
 
-class ServerList():
+class ServerList(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
