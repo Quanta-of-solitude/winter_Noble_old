@@ -15,7 +15,7 @@ from matplotlib import style
 matplotlib.use('Agg')
 import random
 
-class Rating:
+class Rating(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
