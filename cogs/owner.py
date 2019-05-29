@@ -5,7 +5,7 @@ TAKEN FROM COG EXAMPLES.
 from discord.ext import commands
 
 
-class OwnerCog(commands.Cog):
+class Ownes(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
@@ -51,4 +51,4 @@ class OwnerCog(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(OwnerCog(bot))
+    bot.add_cog(Ownes(bot))
