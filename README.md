@@ -28,4 +28,7 @@ do the usual (if you know), then under config vars add **KEYs and deploy with wo
 
 *Thank You.*
 
+```
+update: Work resumes on November or December, 2019
+```
 
