@@ -1,7 +1,7 @@
 '''
-MMORPG COG (Currently for aq3d) written by Neophyte#5556
+MMORPG COG (Currently for aq3d) written by Noble#5556
 
-news api from Sypher#6671
+
 '''
 
 import os
@@ -50,40 +50,14 @@ class mmorpg(commands.Cog):
             else:
                 item_link = link["item_link"]
         return item_link
-    @property
-    def news_api(self):
-        '''get the news api, submitted by Sypher#6671'''
-        with open("data/config.json") as f:
-            link = json.load(f)
-            if link["news_api"] == "api_link_here":
-                news_link = os.environ.get("news_api")
-            else:
-                news_link = link["news_api"]
-        return news_link
+
 
     def dostuff(self, text):
         text = str(text)
         text = text.partition("&")[0]
         return text[2:]
 
-    def getnews(self):
-        try:
-            link = self.news_api
-            r = requests.get(link)
-            stuff = r.json()
-            stuff = json.dumps(stuff)
-            stuff = json.loads(stuff)
-        #print(stuff)
-            stuff = stuff["response"]["news"]
-            stuff_title = stuff[0]["title"]
-            stuff_desc = stuff[0]["description"]
-            stuff_auth = stuff[0]["author"]["name"]
-            stuff_date = stuff[0]["date"]
-            stuff_link = stuff[0]["link"]
-            stuff_image = stuff[0]["image"]
-            return {"title":stuff_title,"description":stuff_desc,"author":stuff_auth,"date":stuff_date,"link":stuff_link,"img":stuff_image}
-        except Exception as e:
-            pass
+
 
     @commands.command(aliases=['character'])
     async def char(self, ctx, *, args:str = None):
@@ -261,7 +235,7 @@ class mmorpg(commands.Cog):
                 server1_state = "**Unknown**"
 
             try:
-                server2_state = server_details[1]["State"]
+                server2_state = server_details[2]["State"]
 
                 if server2_state == True:
                     server2_state = "**Online**"
@@ -274,6 +248,32 @@ class mmorpg(commands.Cog):
                 server2_state = "**Unknown**"
 
             try:
+                server3_state = server_details[3]["State"]
+
+                if server3_state == True:
+                    server3_state = "**Online**"
+                elif not server3_state:
+                    server3_state = "**Unknown**"
+                else:
+                    server3_state = "**Offline**"
+            except Exception as e:
+                print(e)
+                server3_state = "**Unknown**"
+
+            try:
+                server4_state = server_details[4]["State"]
+
+                if server4_state == True:
+                    server4_state = "**Online**"
+                elif not server4_state:
+                    server4_state = "**Unknown**"
+                else:
+                    server4_state = "**Offline**"
+            except Exception as e:
+                print(e)
+                server4_state = "**Unknown**"
+
+            try:
                 countr = server_details[0]["UserCount"]
                 if countr:
                     countr = server_details[0]["UserCount"]
@@ -282,15 +282,36 @@ class mmorpg(commands.Cog):
             except Exception as e:
                 print(e)
                 countr = "0"
+
             try:
-                countb = server_details[1]["UserCount"]
+                countb = server_details[2]["UserCount"]
                 if countb:
-                    countb = server_details[1]["UserCount"]
+                    countb = server_details[2]["UserCount"]
                 elif not countb:
                     countb = "0"
             except Exception as e:
                 print(e)
                 countb = "0"
+
+            try:
+                county = server_details[3]["UserCount"]
+                if county:
+                    county = server_details[3]["UserCount"]
+                elif not county:
+                    county = "0"
+            except Exception as e:
+                print(e)
+                county = "0"
+
+            try:
+                countbl = server_details[4]["UserCount"]
+                if countbl:
+                    countbl = server_details[4]["UserCount"]
+                elif not countbl:
+                    countbl = "0"
+            except Exception as e:
+                print(e)
+                countbl = "0"
 
             '''try:
                 countp = rq_server["UserCount"]
@@ -303,12 +324,22 @@ class mmorpg(commands.Cog):
                 countp = "0"'''
 
             data = "Server Name: **{}**\n".format(server_details[0]["Name"])
-            data +="Count: {}/{}\n".format(countr,server_details[1]["MaxUsers"])
+            data +="Count: {}/{}\n".format(countr,server_details[0]["MaxUsers"])
             data +="Status: %s\n\n"%(server1_state)
-            data += "Server Name: **{}**\n".format(server_details[1]["Name"])
-            data +="Count: {}/{}\n".format(countb,server_details[1]["MaxUsers"])
+
+            data += "Server Name: **{}**\n".format(server_details[2]["Name"])
+            data +="Count: {}/{}\n".format(countb,server_details[2]["MaxUsers"])
             data +="Status: %s\n\n"%(server2_state)
-            data +="\n__**Total Players: {}**__\n\nuse w!aqs <-shorthand".format(int(countr)+int(countb))
+
+            data += "Server Name: **{}**\n".format(server_details[3]["Name"])
+            data +="Count: {}/{}\n".format(county,server_details[3]["MaxUsers"])
+            data +="Status: %s\n\n"%(server3_state)
+
+            data += "Server Name: **{}**\n".format(server_details[4]["Name"])
+            data +="Count: {}/{}\n".format(countbl,server_details[4]["MaxUsers"])
+            data +="Status: %s\n\n"%(server4_state)
+
+            data +="\n__**Total Players: {}**__\n\nuse w!aqs <-shorthand".format(int(countr)+int(countb)+int(county)+int(countbl))
             '''data += "Server Name: **{}**\n".format(rq_server["Name"])
             data +="Count: {}/{}\n".format(countp,rq_server["MaxUsers"])
             data +="Status: %s\n\n\n\n"%(serverp_state)
@@ -355,7 +386,7 @@ class mmorpg(commands.Cog):
             await ctx.send(embed = server_embed)
         except Exception as e:
             print(e)
-            await ctx.send("`PTR is Down! or internal error :P`")
+            await ctx.send("`Missing Linkage....or down.`")
 
     @commands.command()
     async def aq3ditem(self,ctx, *,args:str = None):
@@ -444,25 +475,7 @@ class mmorpg(commands.Cog):
             except Exception as e:
                 print(e)
                 await ctx.send("`Error: Internal Error`")
-    @commands.command()
-    async def aq3dnews(self,ctx):
-        '''get the news recent one'''
-        try:
-            new = self.getnews()
-            await ctx.trigger_typing()
-            data = "**Author:** {}\n".format(new["author"])
-            data += "**Title:** {}\n".format(new["title"])
-            data += "**Description:** {}\n".format(new["description"])
-            data += "**Date:** {}\n".format(new["date"])
-            data += "**Link:** {}\n".format(new["link"])
-            em = discord.Embed(description = data)
-            em.set_author(name = "AQ3D NEWS:")
-            em.color=discord.Colour.green()
-            em.set_image(url = "{}".format(new["img"]))
-            em.set_footer(text = "|Winter-Song|",icon_url = self.bot.user.avatar_url)
-            await ctx.send(embed=em)
-        except Exception as e:
-            await ctx.send("`Error: API Down ;o`")
+
 
     @commands.command(aliases=['aqwserver','serveraqw'])
     async def aqwservers(self,ctx):
