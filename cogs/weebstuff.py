@@ -28,7 +28,7 @@ class weeb(commands.Cog):
         data4_status = data4_status.replace('\n', '')
         data4_air = s.find_all("div", {"class": "spaceit"})[2].get_text()
         data4_air = data4_air.replace('\n', '')
-        data5_image = s.find("img", {"class": "ac"}, src = True)
+        data5_image = s.find("img", {"class": "lazyloaded"}, src = True)
         infos.append(data4_episodes+"\n"+data4_status+"\n"+data4_air)
         return {"users":data1["data-user"],"rating" : data1_rate, "rank": data2_rank, "inf": desc, "add": infos, "image": data5_image["src"]}
 
@@ -52,6 +52,7 @@ class weeb(commands.Cog):
         except Exception as e:
             print(e)
             await ctx.send("`Error: NONE!`")
+
     @commands.command(aliases=['animedata'])
     async def anidata(self, ctx, *,query:str = None):
         '''data about a result'''
