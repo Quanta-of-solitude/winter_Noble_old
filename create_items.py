@@ -14,7 +14,7 @@ def create_Tables():
     command2 = ("""CREATE TABLE leaveyou (serverid VARCHAR,leavemsg VARCHAR,channelid VARCHAR)""")
     cur.execute(command2)
     command3 = ("""CREATE TABLE autoroler (serverid VARCHAR,roleid VARCHAR)""")
-
+    cur.execute(command3)
 
 cur.close()
 conn.close()
