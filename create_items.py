@@ -13,7 +13,7 @@ def create_Tables():
     cur.execute(command)
     command2 = ("""CREATE TABLE leaveyou (serverid VARCHAR,channelid VARCHAR,leavemsg VARCHAR,leavewitch VARCHAR)""")
     cur.execute(command2)
-    command3 = ("""CREATE TABLE autoroler (serverid VARCHAR,roleid VARCHAR)""")
+    command3 = ("""CREATE TABLE autoroler (serverid VARCHAR,roleidname VARCHAR,roleswitch VARCHAR)""")
     cur.execute(command3)
 
 cur.close()
