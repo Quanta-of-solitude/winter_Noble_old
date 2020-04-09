@@ -19,3 +19,4 @@ flickrapi
 git+https://github.com/DiscordBotList/DBL-Python-Library
 yarl<1.2
 psycopg2
+imgkit
