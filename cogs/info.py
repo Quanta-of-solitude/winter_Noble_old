@@ -178,7 +178,7 @@ class Information(commands.Cog):
         total_members = sum(1 for _ in self.bot.get_all_members())
         total_online = len({m.id for m in self.bot.get_all_members() if m.status is discord.Status.online})
         total_unique = len(self.bot.users)
-        description = "```I am a simple bot designed for general purposes!\nFocused mainly in AE section at the moment. Not a 100% complete bot, ongoing updates daily and adding features :D\nView my help command using w!help```"
+        description = "```I am a simple bot designed for general purposes!\nI was inactive for a while, I am fixing things on go. Sorry.Not a 100% complete bot, ongoing updates daily and adding features :D\nView my help command using w!help```"
         library_used = "```discord.py @rewrite```"
         embed.add_field(name='Owner:', value='```Made by: Noble#5556\nID: 280271578850263040\n```', inline = False)
         embed.add_field(name = 'Description:', value = description, inline = False)
@@ -200,21 +200,6 @@ class Information(commands.Cog):
         upvote = "https://discordbots.org/bot/385681784614027265"
         await ctx.send("Get me from:\n"+em+"\n\nIf you are enjoying my bot so far, please upvote it:\n"+upvote+"\n\nIf you want to suggest something/or need help join:\n"+em1)
 
-    @commands.command()
-    async def music(self,ctx):
-        '''Music commands'''
-        await ctx.trigger_typing()
-        help_cmd = """
-            **__Music Commands:__**
-        ```
-1. m!summon: before using.
-2. m!play [song]: play the song.
-3. m!repeat: toggle repeat modes.
-4. m!queue: songs in queue.
-5. m!volume [value]: set volume.
-6. m!promote [number]: put song to top.
-7. m!disconnect [always do.]
-        ```"""
-        await ctx.send(help_cmd)
+    
 def setup(bot):
 	bot.add_cog(Information(bot))

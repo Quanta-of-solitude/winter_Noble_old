@@ -52,14 +52,14 @@ class Utility(commands.Cog):
 
     @commands.command(name='help')
     async def help(self, ctx):
-        general_commands = "\n`user`, `server`, `help` , `invite`, `about`, `avatar`"
+        general_commands = "\n`user`,`server`, `help` , `invite`, `about`, `avatar`, `banner`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
         aq_commands = """i)AQ3D: `char`, `mchar`, `titles`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `mtitles`, `title`\n\nii)AQW: `aqwchar`, `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
         other_games = "\n`osu`"
         music_command = "\n`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "\n`translator`"
-        miscellaneous_commands = "\n`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
+        miscellaneous_commands = "\n`rng`,`emoji`,`rate`, `actions`, `cmdadd`, `cmd`, `allcmds`, `delcmd (owner only)`, `google`, `wikipedia`"
         welcome_commands = "\n`welcomemsg`, `togglewel`, `welview`,`leavemsg`, `toggleleave`, `settype`, `setbg`"
         anime_commands = "`\nanisearch`, `anidata`"
         further_help = "`\nexpand[command]`"
@@ -71,13 +71,13 @@ class Utility(commands.Cog):
         em.add_field(name = "2.Moderation: ", value = moderation_commands ,inline = False)
         em.add_field(name = "3.AE: ", value = "**__NOTE__**: If you can't view the full char page in mobile using `w!char` use `w!mchar` and Mobile users use `w!mtitles` for titles list instead of `w!aq3dtitles`\n\n"+aq_commands ,inline = False)
         em.add_field(name = "4.Other Games: ", value = other_games ,inline = False)
-        em.add_field(name = "5.Music ", value = music_command ,inline = False)
-        em.add_field(name = "6.Translator:", value = translator_commands, inline = False)
-        em.add_field(name = "7.Welcome/Leave", value = welcome_commands, inline = False)
-        em.add_field(name = "8.Miscellaneous ", value =miscellaneous_commands ,inline = False)
-        em.add_field(name = "9.Anime Stuff ", value =anime_commands ,inline = False)
-        em.add_field(name = "10.Expanded help: ", value = further_help ,inline = False)
-        em.add_field(name = "11.Report a problem: ", value = "If you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
+        #em.add_field(name = "5.Music ", value = music_command ,inline = False)
+        em.add_field(name = "5.Translator:", value = translator_commands, inline = False)
+        em.add_field(name = "6.Welcome/Leave", value = welcome_commands, inline = False)
+        em.add_field(name = "7.Miscellaneous ", value =miscellaneous_commands ,inline = False)
+        em.add_field(name = "8.Anime Stuff ", value =anime_commands ,inline = False)
+        em.add_field(name = "9.Expanded help: ", value = further_help ,inline = False)
+        em.add_field(name = "10.Report a problem: ", value = "If you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
         em.add_field(name = "Support/Server:", value = "[Upvote The BOT!](https://discordbots.org/bot/385681784614027265)\n[Support Server](https://discord.gg/k3PKut6)", inline = False)
         em.colour = discord.Colour.blue()
         em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
@@ -98,6 +98,7 @@ class Utility(commands.Cog):
             em.colour = discord.Colour.green()
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
+
         elif args == 'server':
             info = "Gives user details."
             usage = "w!server"
@@ -111,6 +112,16 @@ class Utility(commands.Cog):
         elif args == 'help':
             info = "Shows the help menu."
             usage = "w!help"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+        elif args == 'banner':
+            info = "Shows server banner."
+            usage = "w!banner"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
@@ -388,9 +399,9 @@ class Utility(commands.Cog):
             em.colour = discord.Colour.green()
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
-        elif args == 'music':
-            info = "Get music bot commands."
-            usage = "w!music"
+        elif args == 'rng':
+            info = "Do a Random pick among choices!"
+            usage = "w!rng 1,2,3,4"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
@@ -615,6 +626,51 @@ class Utility(commands.Cog):
             em.set_author(name = "Command doesn't exist.\nJoin Help Server, if you need help:\nhttps://discord.gg/k3PKut6", icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.colour = discord.Colour.red()
             await ctx.send(embed = em)
+
+
+    @commands.command()
+    async def avatar(self, ctx, *, member: discord.Member = None):
+        """gets the display picture of a user
+        Parameters
+        • member – The tag, name or id of the user
+        """
+        format = "gif"
+        member = member or ctx.author
+        if member.is_avatar_animated() != True:
+	        format = "png"
+        avatar = member.avatar_url_as(format = format if format is not "gif" else None)
+        async with ctx.session.get(str(avatar)) as resp:
+            image = await resp.read()
+        with io.BytesIO(image) as file:
+            await ctx.send(file = discord.File(file, f"DP.{format}"))
+        #await ctx.delete()
+
+    @commands.command()
+    async def rng(self, ctx, *, choices: commands.clean_content):
+        '''choose! use , in between
+        '''
+        choices = choices.split(',')
+        choices[0] = ' ' + choices[0]
+        await ctx.send(str(random.choice(choices))[1:])
+
+    @commands.command()
+    async def banner(self, ctx, *, guild = None):
+        """gets a guild's banner image
+        """
+        try:
+            if guild is None:
+                guild = ctx.guild
+            elif type(guild) == int:
+                guild = discord.utils.get(self.bot.guilds, id = guild)
+            elif type(guild) == str:
+                guild = discord.utils.get(self.bot.guilds, name = guild)
+            banner = guild.banner_url_as(format = "png")
+            async with ctx.session.get(str(banner)) as resp:
+                image = await resp.read()
+            with io.BytesIO(image) as file:
+                await ctx.send(file = discord.File(file, "banner.png"))
+        except Exception as e:
+            await ctx.send("`Banner wasn't found..`")
 
     @commands.command(pass_context=True, hidden=True, name='eval')
     @commands.check(is_owner)

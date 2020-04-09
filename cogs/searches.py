@@ -13,6 +13,7 @@ import wikipedia
 from lxml import etree
 from bs4 import BeautifulSoup
 import requests
+import asyncio
 
 class Searches(commands.Cog):
 
@@ -372,7 +373,7 @@ class Searches(commands.Cog):
         emb.add_field(name="Wikipedia Result:", value=textList[0] + "...")
         await ctx.send(embed=emb)
 
-    
+
 
 
 def setup(bot):
