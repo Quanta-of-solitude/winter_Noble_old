@@ -13,6 +13,7 @@ from ext import embedtobox
 import datetime
 import asyncio
 import psutil
+from PIL import Image
 import random
 import os
 import io
@@ -22,31 +23,20 @@ class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=['av'])
-    async def avatar(self, ctx, *, member : discord.Member=None):
-        '''Returns someone's avatar url'''
-        await ctx.trigger_typing()
+    @commands.command(aliases = ["av"])
+    async def avatar(self, ctx, *, member: discord.Member = None):
+
+        format = "gif"
         member = member or ctx.author
-        av = member.avatar_url
-        if ".gif" in av:
-            av += "&f=.gif"
-        color = await ctx.get_dominant_color(av)
-        em = discord.Embed(url=av, color=color)
-        em.set_author(name=str(member), icon_url=av)
-        em.set_image(url=av)
-        try:
-            await ctx.send(embed=em)
-        except discord.HTTPException:
-            em_list = await embedtobox.etb(em)
-            for page in em_list:
-                await ctx.send(page)
-            try:
-                async with ctx.session.get(av) as resp:
-                    image = await resp.read()
-                with io.BytesIO(image) as file:
-                    await ctx.send(file=discord.File(file, 'avatar.png'))
-            except discord.HTTPException:
-                await ctx.send(av)
+        if member.is_avatar_animated() != True:
+	        format = "png"
+        avatar = member.avatar_url_as(format = format if format is not "gif" else None)
+        async with ctx.session.get(str(avatar)) as resp:
+            image = await resp.read()
+        with io.BytesIO(image) as file:
+            await ctx.send(file = discord.File(file, f"DP.{format}"))
+        #await ctx.delete()
+
 
     @commands.command(aliases=['servericon'], no_pm=True)
     async def serverlogo(self, ctx):
@@ -200,6 +190,6 @@ class Information(commands.Cog):
         upvote = "https://discordbots.org/bot/385681784614027265"
         await ctx.send("Get me from:\n"+em+"\n\nIf you are enjoying my bot so far, please upvote it:\n"+upvote+"\n\nIf you want to suggest something/or need help join:\n"+em1)
 
-    
+
 def setup(bot):
 	bot.add_cog(Information(bot))
