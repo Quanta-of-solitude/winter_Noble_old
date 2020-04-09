@@ -629,23 +629,6 @@ class Utility(commands.Cog):
 
 
     @commands.command()
-    async def avatar(self, ctx, *, member: discord.Member = None):
-        """gets the display picture of a user
-        Parameters
-        • member – The tag, name or id of the user
-        """
-        format = "gif"
-        member = member or ctx.author
-        if member.is_avatar_animated() != True:
-	        format = "png"
-        avatar = member.avatar_url_as(format = format if format is not "gif" else None)
-        async with ctx.session.get(str(avatar)) as resp:
-            image = await resp.read()
-        with io.BytesIO(image) as file:
-            await ctx.send(file = discord.File(file, f"DP.{format}"))
-        #await ctx.delete()
-
-    @commands.command()
     async def rng(self, ctx, *, choices: commands.clean_content):
         '''choose! use , in between
         '''
