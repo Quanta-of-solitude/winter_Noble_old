@@ -7,11 +7,8 @@ sympy
 psutil
 bs4
 cr-py
-urban-async
 moviepy
 spice_api
-cleverwrap
-git+https://github.com/roundar/myjson
 wikipedia
 numpy
 matplotlib
