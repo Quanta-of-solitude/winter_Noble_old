@@ -441,7 +441,7 @@ class Utility(commands.Cog):
             await ctx.send(embed = em)
         elif args == 'cmdadd':
             info = "Adding a custom command!"
-            usage = """w!cmdadd "Key" "Value".\n\n**__For Example:__** w!cmdadd "Java" "A Programming Language."\n\nBesides texts, links can be used too, but not both together for the moment.\n\n **__PS:__** The Quotations are necessary and some image links might show up your image."""
+            usage = """w!cmdadd [your command].\n\n**__For Example:__** w!cmdadd I am okay\n\nBesides texts, links can be used too, but not both together for the moment.\n\n **__PS:__** The Quotations are necessary and some image links might show up your image."""
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
@@ -470,8 +470,8 @@ class Utility(commands.Cog):
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
         elif args == 'cmd':
-            info = "Get the custom added command, if exists."
-            usage = "w!cmd [text(key)]\n\nEg: w!cmd test"
+            info = "Get the custom added command, if exists. (that you added)"
+            usage = "w!cmd\n\nEg: w!cmd or w!cmd [id of someone who put a cmd]"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
