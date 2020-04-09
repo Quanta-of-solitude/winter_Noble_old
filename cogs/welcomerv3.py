@@ -155,7 +155,7 @@ class Welcomer(commands.Cog):
                 await ctx.send("`Welcome was not set for the this server! No actions to do here.`")
             else:
                 status_now = "select welcomeswitch from welcomeyou where serverid='{}'".format(server.id)
-                cur.execute(command)
+                cur.execute(status_now)
                 current = cur.fetchall()
                 await ctx.send(f"currently welcome messages are: {current[0][0]}")
         else:
@@ -187,7 +187,7 @@ class Welcomer(commands.Cog):
                 await ctx.send("`Leave was not set for the this server! No actions to do here.`")
             else:
                 status_now = "select leaveswitch from leaveyou where serverid='{}'".format(server.id)
-                cur.execute(command)
+                cur.execute(status_now)
                 current = cur.fetchall()
                 await ctx.send(f"currently leave messages are: {current[0][0]}")
         else:
@@ -310,7 +310,7 @@ class Welcomer(commands.Cog):
             checked = bool(res_check[0][0])
 
             type_msg_image = "select welcometype,welcomemsg,welcomelinkimage from welcomeyou where serverid= '{}'".format(server.id)
-            cur.execute(check_img_text)
+            cur.execute(type_msg_image)
             result = cur.fetchall()
             type_textpic = result[0][0]
             msg = result[0][1]
