@@ -14,6 +14,8 @@ def create_Tables():
     command2 = ("""CREATE TABLE leaveyou (serverid VARCHAR,channelid VARCHAR,leavemsg VARCHAR,leaveswitch VARCHAR)""")
     cur.execute(command2)
     command3 = ("""CREATE TABLE autoroler (serverid VARCHAR,roleidname VARCHAR,roleswitch VARCHAR)""")
+    c4 = ("""CREATE TABLE reports (reportid VARCHAR,userid VARCHAR,report VARCHAR)""")
+    c5 = ("""CREATE TABLE cmds (authorid VARCHAR,authroname VARCHAR,cmd VARCHAR)""")
     cur.execute(command3)
 
 cur.close()
