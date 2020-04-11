@@ -46,15 +46,15 @@ class newShot(commands.Cog):
                 }
 
                 res = requests.post(url, payload)
-                got_file = res.content.decode()
-                #print(got_file)
-                got_file = json.loads(got_file)
-                file = got_file["data"]["url_viewer"]
-                file = file.replace("\/","//")
-                em = discord.Embed()
-                em.set_image(url = "{}".format(file))
-                await ctx.send(embed =em)
-                
+            got_file = res.content.decode()
+            #print(got_file)
+            got_file = json.loads(got_file)
+            file = got_file["data"]["url_viewer"]
+            file = file.replace("\/","//")
+            em = discord.Embed()
+            em.set_image(url = "{}".format(file))
+            await ctx.send(embed =em)
+
         except Exception as e:
             print(e)
 
