@@ -4,6 +4,7 @@ import requests
 import json
 from discord.ext import commands
 import imgkit
+import base64
 
 config = imgkit.config(wkhtmltoimage="./bin/wkhtmltopdf")
 
@@ -35,7 +36,7 @@ class newShot(commands.Cog):
             new_text = args.replace(' ','+')
             link = link+new_text
             imgkit.from_url(f'{link}', 'out.jpg',config=config)
-            await ctx.send(file=discord.File('out.jpg'))
+            #await ctx.send(file=discord.File('out.jpg'))
 
             with open("out.jpg", "rb") as file:
                 url = "https://api.imgbb.com/1/upload"
