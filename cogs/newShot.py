@@ -40,7 +40,7 @@ class newShot(commands.Cog):
             #imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
             try:
                 sendsnap = "{}/".format(os.environ.get("linksnap"))+link
-                await asyncio.sleep(1.5)
+                await asyncio.sleep(2.5)
                 em = discord.Embed(color = 0000, description = token)
                 em.set_image(url = "{}".format(sendsnap))
                 await ctx.send(embed =em)
