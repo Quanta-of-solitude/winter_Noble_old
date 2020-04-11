@@ -33,13 +33,15 @@ class newShot(commands.Cog):
                 await ctx.send(content = "`Missing name`")
                 return
             link = self.character_page_link
+            token = args
             args = args.lower()
             new_text = args.replace(' ','+')
             link = link+new_text
             #imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
             try:
                 sendsnap = "{}/".format(os.environ.get("linksnap"))+link
-                await asyncio.sleep(2)
+                await asyncio.sleep(1.5)
+                em = discord.Embed(color = 0000, description = token)
                 em.set_image(url = "{}".format(sendsnap))
                 await ctx.send(embed =em)
             except Exception as e:
