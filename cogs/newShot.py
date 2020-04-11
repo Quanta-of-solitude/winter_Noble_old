@@ -34,7 +34,7 @@ class newShot(commands.Cog):
             link = self.character_page_link
             new_text = args.replace(' ','+')
             link = link+new_text
-            imgkit.from_url(f'{link}', 'out.jpg')
+            imgkit.from_url(f'{link}', 'out.jpg',config=config)
             await ctx.send(file=discord.File('out.jpg'))
 
             with open("out.jpg", "rb") as file:
