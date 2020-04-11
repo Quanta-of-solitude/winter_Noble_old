@@ -6,6 +6,9 @@ from discord.ext import commands
 import imgkit
 import base64
 import asyncio
+import PIL
+from PIL import Image
+import io
 
 config = imgkit.config(wkhtmltoimage="./bin/wkhtmltopdf")
 
@@ -34,13 +37,18 @@ class newShot(commands.Cog):
                 await ctx.send(content = "`Missing name`")
                 return
             link = self.character_page_link
+            args = args.lower()
             new_text = args.replace(' ','+')
             link = link+new_text
-            imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
-            await asyncio.sleep(2)
-            await ctx.send(file=discord.File('./imgs/out.jpg'))
+            #imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
+            img = imgkit.from_url(f'{link}', False,config=config)
+            str_file= io.BytesIO(img)
+            pimg= PIL.Image.open(str_file)
+            pimg.save("content.jpeg")
 
-            with open("./imgs/out.jpg", "rb") as file:
+            await ctx.send(file=discord.File('content.jpeg'))
+
+            with open("content.jpeg", "rb") as file:
                 url = "https://api.imgbb.com/1/upload"
                 payload = {
                     "key": "{}".format(os.environ.get("imgkey")),
