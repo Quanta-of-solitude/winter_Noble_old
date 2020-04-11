@@ -36,11 +36,11 @@ class newShot(commands.Cog):
             link = self.character_page_link
             new_text = args.replace(' ','+')
             link = link+new_text
-            imgkit.from_url(f'{link}', 'out.jpg',config=config)
+            imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
             await asyncio.sleep(2)
-            await ctx.send(file=discord.File('out.jpg'))
+            await ctx.send(file=discord.File('./imgs/out.jpg'))
 
-            with open("out.jpg", "rb") as file:
+            with open("./imgs/out.jpg", "rb") as file:
                 url = "https://api.imgbb.com/1/upload"
                 payload = {
                     "key": "{}".format(os.environ.get("imgkey")),
