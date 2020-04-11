@@ -3,14 +3,10 @@ import discord
 import requests
 import json
 from discord.ext import commands
-import imgkit
-import base64
 import asyncio
-import PIL
-from PIL import Image
-import io
 
-config = imgkit.config(wkhtmltoimage="./bin/wkhtmltopdf")
+
+#config = imgkit.config(wkhtmltoimage="./bin/wkhtmltopdf")
 
 
 
@@ -41,30 +37,14 @@ class newShot(commands.Cog):
             new_text = args.replace(' ','+')
             link = link+new_text
             #imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
-            img = imgkit.from_url(f'{link}', False,config=config)
-            str_file= io.BytesIO(img)
-            pimg= PIL.Image.open(str_file)
-            pimg.save("content.jpeg")
-
-            await ctx.send(file=discord.File('content.jpeg'))
-
-            with open("content.jpeg", "rb") as file:
-                url = "https://api.imgbb.com/1/upload"
-                payload = {
-                    "key": "{}".format(os.environ.get("imgkey")),
-                    "image": base64.b64encode(file.read()),
-                }
-
-                res = requests.post(url, payload)
-            got_file = res.content.decode()
-            print(got_file)
-            got_file = json.loads(got_file)
-            print(got_file)
-            file = got_file["data"]["url_viewer"]
-            file = file.replace("\/","//")
-            em = discord.Embed()
-            em.set_image(url = "{}".format(file))
-            await ctx.send(embed =em)
+            try:
+                sendsnap = "{}/".format(os.environ.get(linksnap))+link
+                await asyncio.sleep(2)
+                em.set_image(url = "{}".format(sendsnap))
+                await ctx.send(embed =em)
+            except Exception as e:
+                print(e)
+                await ctx.send("`some error..`")
 
         except Exception as e:
             print(e)
