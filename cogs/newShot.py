@@ -38,7 +38,7 @@ class newShot(commands.Cog):
             link = link+new_text
             #imgkit.from_url(f'{link}', './imgs/out.jpg',config=config)
             try:
-                sendsnap = "{}/".format(os.environ.get(linksnap))+link
+                sendsnap = "{}/".format(os.environ.get("linksnap"))+link
                 await asyncio.sleep(2)
                 em.set_image(url = "{}".format(sendsnap))
                 await ctx.send(embed =em)
