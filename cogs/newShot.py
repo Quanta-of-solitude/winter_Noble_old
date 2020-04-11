@@ -34,8 +34,26 @@ class newShot(commands.Cog):
             link = self.character_page_link
             new_text = args.replace(' ','+')
             link = link+new_text
-            imgkit.from_url(f'{link}', 'out.jpg',config=config)
+            imgkit.from_url(f'{link}', 'out.jpg')
             await ctx.send(file=discord.File('out.jpg'))
+
+            with open("out.jpg", "rb") as file:
+                url = "https://api.imgbb.com/1/upload"
+                payload = {
+                    "key": "{}".format(os.environ.get("imgkey")),
+                    "image": base64.b64encode(file.read()),
+                }
+
+                res = requests.post(url, payload)
+                got_file = res.content.decode()
+                #print(got_file)
+                got_file = json.loads(got_file)
+                file = got_file["data"]["url_viewer"]
+                file = file.replace("\/","//")
+                em = discord.Embed()
+                em.set_image(url = "{}".format(file))
+                await ctx.send(embed =em)
+                
         except Exception as e:
             print(e)
 
