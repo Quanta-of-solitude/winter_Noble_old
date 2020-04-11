@@ -3,6 +3,7 @@ lxml
 colorthief
 pyparsing
 cleverwrap
+pillow
 urban-async
 requests
 sympy
