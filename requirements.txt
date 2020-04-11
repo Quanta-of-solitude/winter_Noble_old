@@ -18,6 +18,6 @@ flickrapi
 git+https://github.com/DiscordBotList/DBL-Python-Library
 yarl<1.2
 psycopg2
-wkhtmltopdf-pack==0.12.3.0
+git+git://github.com/johnfraney/wkhtmltopdf-pack.git
 pdfkit==0.6.0
 imgkit
