@@ -5,7 +5,7 @@ import json
 from discord.ext import commands
 import imgkit
 
-config = imgkit.config(wkhtmltoimage="{}".format(os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')))
+#config = imgkit.config(wkhtmltoimage="{}".format(os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')))
 
 
 
