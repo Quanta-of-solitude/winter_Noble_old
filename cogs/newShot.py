@@ -5,7 +5,8 @@ import json
 from discord.ext import commands
 import imgkit
 
-#config = imgkit.config(wkhtmltoimage='/app/.apt/usr/local/bin/wkhtmltopdf/wkhtmltox_0.12.5-1.bionic_amd64.deb')
+config = imgkit.config(wkhtmltoimage="{}".format(os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')))
+
 
 
 class newShot(commands.Cog):
