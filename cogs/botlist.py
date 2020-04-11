@@ -17,6 +17,7 @@ class DiscordBotsOrgAPI(commands.Cog):
 
 
     async def update_stats(self):
+        await asyncio.sleep(1800)
         dbltoken = '{}'.format(os.environ.get("dbltokenT"))
         headers = {'Authorization' : dbltoken}
         while True:
@@ -29,7 +30,7 @@ class DiscordBotsOrgAPI(commands.Cog):
                     else:
                         print(r.status)
                 await session.close()
-            await asyncio.sleep(1800)
+            
 
 
 def setup(bot):
