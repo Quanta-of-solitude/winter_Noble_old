@@ -3,8 +3,8 @@ import os
 import urllib.parse
 import random
 import requests
-from discord.ext import commands
 import json
+from discord.ext import commands
 
 
 
@@ -26,7 +26,8 @@ class talktTest(commands.Cog):
             code = data["code"]
 
             if code == 0:
-
+                
+                await ctx.trigger_typing()
                 query = urllib.parse.quote(text)
                 chatLink = "{}".format(os.environ.get("winterLink"))+f"{sessionids}&q={query}"
                 fetch = requests.get(chatLink)
