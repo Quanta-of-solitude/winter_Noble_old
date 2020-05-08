@@ -77,7 +77,7 @@ class mmorpg(commands.Cog):
             g_data = soup.find_all("h3")
             f_data = soup.find_all("div",{"class": "text-center nopadding"})
             img_data = soup.findAll('img',alt=True,src = True)
-            c = soup.find("img", alt=True, src=re.compile(r'\/Content\/img\/char\/.+.png'))
+            c = soup.find("img", alt=True, src=re.compile(r'\/gamefiles\/images\/classesbg\/.+.png'))
             await ctx.trigger_typing()
             for n in f_data:
                 kjk = n.text
