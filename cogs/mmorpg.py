@@ -107,7 +107,7 @@ class mmorpg(commands.Cog):
                 character_embed.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
                 character_embed.set_image(url = "{}".format(info['clpic']))
                 character_embed.color=discord.Colour.red()
-                await ctx.send(content = "**Character-Page. For title Page use w!titles []**",embed = character_embed)
+                await ctx.send(content = "**Character-Page**",embed = character_embed)
             except:
 
                 paginated_text = ctx.paginate(data)
