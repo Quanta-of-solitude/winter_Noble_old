@@ -89,7 +89,7 @@ class mmorpg(commands.Cog):
                 klma = '\n'.join(badges)
             info['cl'] = c['alt']
 
-            info['clpic'] = 'https://game.aq3d.com' + c['src']
+            info['clpic'] = c['src']
             #loki = lolewii+"Class:"+"\n"+info['cl']+"\n"+"\n"+" **__Badges__** \n"+" **"+klma+"**"
             player_name = lolewii
             player_class = info['cl']
