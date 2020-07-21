@@ -426,7 +426,7 @@ class Utility(commands.Cog):
 
         elif args == 'apex':
             info = "More commands for the game will be added. Get Information about Apex Legend character!"
-            usage = "Plaatforms: pc,xbl,osn\n\nw!apex [platform] [player] [optional: legend]\nExample: w!apex pc honeykoko2015   <-this will give the list of legends we can get info about\nExample: w!apex pc Nyrize octane <-This will give the details of legend octane of the player Nyrize (banners only)"
+            usage = "Plaatforms: pc,xbl,psn\n\nw!apex [platform] [player] [optional: legend]\nExample: w!apex pc honeykoko2015   <-this will give the list of legends we can get info about\nExample: w!apex pc Nyrize octane <-This will give the details of legend octane of the player Nyrize (banners only)"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
