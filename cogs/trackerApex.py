@@ -22,9 +22,7 @@ class Apex(commands.Cog):
             return
 
 
-        if platform.lower() != "pc" or platform.lower() != "xbl" or platform.lower() != "psn":
-            await ctx.send("`You need to specify a valid platform: pc,psn,xbl`")
-            return
+        print(platform,name,legend)
 
         legendNames = []
         details = []
