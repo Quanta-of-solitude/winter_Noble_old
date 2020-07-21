@@ -44,13 +44,13 @@ class Apex(commands.Cog):
             data = json.loads(requests.get(link,headers=headers).content)
 
         except Exception as e:
-            print(e)
+            print(e,"Before requesting")
             await ctx.send("`Error Encountered, sorry`")
 
         
         
         try:
-            level = "Level: ",data["data"]["segments"][0]["stats"]["level"]["displayValue"]
+            level = data["data"]["segments"][0]["stats"]["level"]["displayValue"]
             rank = data["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["rankName"]
             rankIcon = data["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["iconUrl"]
             score = data["data"]["segments"][0]["stats"]["rankScore"]["displayValue"]
@@ -109,7 +109,7 @@ class Apex(commands.Cog):
             await ctx.send(embed = playerEmbed) 
         
         except Exception as e:
-            print(e)
+            print(e,"In the body")
             await ctx.send(f"`{e}`")
 
 
