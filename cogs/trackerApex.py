@@ -60,7 +60,7 @@ class Apex(commands.Cog):
                     level = 500
             except Exception as e:
                 print(e,"parse section")
-                await ctx.send("`The player was not found`")
+                await ctx.send("`You sure that player exists? I cannot find him/her in apex.tracker.gg`")
         
             playerEmbed = discord.Embed(title = "{}".format(name), url = trackerLink)
             playerEmbed.set_author(name = "Apex Legends",icon_url = "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Apex_legends_cover.jpg/220px-Apex_legends_cover.jpg")
@@ -116,7 +116,7 @@ class Apex(commands.Cog):
         
         except Exception as e:
             print(e,"In the body")
-            await ctx.send("`If I didn't say that player was not found, then I am rate-limited :( (try after a min)`")
+            await ctx.send("`If there's nothing abve then: Player's Banner is empty for the legend... or rate-limited maybe?(counter to be added)`")
 
 
 
