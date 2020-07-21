@@ -54,8 +54,9 @@ class Utility(commands.Cog):
     async def help(self, ctx):
         general_commands = "\n`user`,`server`, `help` , `invite`, `about`, `avatar`, `banner`"
         #aq_commands = "`char`, `aq3ditem`, `aq3dserver`, `aq3dnews`, `aqwservers`"
-        aq_commands = """i)AQ3D: `char`, `mchar`, `titles`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`, `aq3dtitles`, `mtitles`, `title`\n\nii)AQW: `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
+        aq_commands = """i)AQ3D: `char`, `aq3ditem`, `aq3dserver`, `aq3dnews(not stable always)`\n\nii)AQW (Broken will be fixed asap, Sorry!): `aqwbadges`, `aqwserver`, `aqwitem (buggy)`\n\niii)EpicDuel: `epchar` """
         #other_games = "\n`osu`"
+        apex_command = "`apex`: apex [platform] [player] [optional: legend]  Please refer to w!expand apex"
         music_command = "\n`music`"
         moderation_commands = "**__NOTE__:** To use Moderation commands, the bot must have a role higher than the one to be used upon.\n\n`kick`, `ban`, `bans`, `mute`, `unban`, `unmute`, `addrole`, `removerole`"
         translator_commands = "\n`translator`"
@@ -72,11 +73,12 @@ class Utility(commands.Cog):
         em.add_field(name = "3.AE: ", value = "**__NOTE__**: If you can't view the full char page in mobile using `w!char` use `w!mchar` and Mobile users use `w!mtitles` for titles list instead of `w!aq3dtitles`\n\n"+aq_commands ,inline = False)
         #em.add_field(name = "4.Other Games: ", value = other_games ,inline = False)
         #em.add_field(name = "5.Music ", value = music_command ,inline = False)
-        em.add_field(name = "4.Translator:", value = translator_commands, inline = False)
-        em.add_field(name = "5.Welcome/Leave", value = welcome_commands, inline = False)
-        em.add_field(name = "6.Miscellaneous ", value =miscellaneous_commands ,inline = False)
-        em.add_field(name = "7.Anime Stuff ", value =anime_commands ,inline = False)
-        em.add_field(name = "8.Expanded help: ", value = further_help ,inline = False)
+        em.add_field(name = "4.Apex Legends:", value = apex_command, inline = False)
+        em.add_field(name = "5.Translator:", value = translator_commands, inline = False)
+        em.add_field(name = "6.Welcome/Leave", value = welcome_commands, inline = False)
+        em.add_field(name = "7.Miscellaneous ", value =miscellaneous_commands ,inline = False)
+        em.add_field(name = "8.Anime Stuff ", value =anime_commands ,inline = False)
+        em.add_field(name = "9.Expanded help: ", value = further_help ,inline = False)
         #em.add_field(name = "9.Report a problem: ", value = "If you have a suggestion or want something to be added or you want to report an error use:\n\n`report`",inline = False)
         #em.add_field(name = "Talk to me: ", value = "You can talk to me! I learn as you talk. Currently I have less conversations but the more you talk the more I catch up (please be patient, I have a limit too ;-;), you can help me! To talk\n\n winter [something you want to say]",inline = False)
         em.add_field(name = "Support/Server:", value = "[Upvote The BOT!](https://discordbots.org/bot/385681784614027265)\n[Support Server](https://discord.gg/k3PKut6)", inline = False)
@@ -272,7 +274,7 @@ class Utility(commands.Cog):
             await ctx.send(embed = em)
         elif args == 'char':
             info = "Gives aq3d character details."
-            usage = "w!char [someone]. Eg: w!char test\nNot all badges appear on mobile, so use w!mchar instead! :D"
+            usage = "w!char [someone]. Eg: w!char test\nNot all badges might appear on mobile :D"
             em = discord.Embed()
             em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
             em.add_field(name = "1.Info:", value = info,inline = False)
@@ -300,6 +302,7 @@ class Utility(commands.Cog):
             em.colour = discord.Colour.green()
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
+
         elif args == 'aq3dtitles':
             info = "Gives a list of aq3d titles/achievements present at the moment in the game."
             usage = "w!aq3dtitles"
@@ -420,6 +423,18 @@ class Utility(commands.Cog):
             em.colour = discord.Colour.green()
             em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
             await ctx.send(embed = em)
+
+        elif args == 'apex':
+            info = "More commands for the game will be added. Get Information about Apex Legend character!"
+            usage = "Plaatforms: pc,xbl,osn\n\nw!apex [platform] [player] [optional: legend]\nExample: w!apex pc honeykoko2015   <-this will give the list of legends we can get info about\nExample: w!apex pc Nyrize octane <-This will give the details of legend octane of the player Nyrize (banners only)"
+            em = discord.Embed()
+            em.set_author(name = "Help Menu ['{}']".format(args), icon_url = "http://bestanimations.com/Science/Chemistry/chemistry-atom-proton-electron-animation-17.gif")
+            em.add_field(name = "1.Info:", value = info,inline = False)
+            em.add_field(name = "2.Usage: ", value = usage ,inline = False)
+            em.colour = discord.Colour.green()
+            em.set_footer(text = "|Winter-Song|",icon_url = ctx.author.avatar_url)
+            await ctx.send(embed = em)
+
         elif args == 'expand':
             info = "Get expanded help for commands."
             usage = "w!expand expand"
