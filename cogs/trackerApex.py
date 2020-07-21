@@ -116,7 +116,7 @@ class Apex(commands.Cog):
         
         except Exception as e:
             print(e,"In the body")
-            await ctx.send("`The player was not found :(`")
+            await ctx.send("`If I didn't say that player was not found, then I am rate-limited :( (try after a min)`")
 
 
 
