@@ -50,13 +50,17 @@ class Apex(commands.Cog):
         
         
         try:
-            level = data["data"]["segments"][0]["stats"]["level"]["displayValue"]
-            rank = data["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["rankName"]
-            rankIcon = data["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["iconUrl"]
-            score = data["data"]["segments"][0]["stats"]["rankScore"]["displayValue"]
-            trackerLink = "https://apex.tracker.gg/profile/{pf}/{user}".format(pf=plat,user=name)
-            if int(level) > 500:
-                level = 500
+            try:
+                level = data["data"]["segments"][0]["stats"]["level"]["displayValue"]
+                rank = data["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["rankName"]
+                rankIcon = data["data"]["segments"][0]["stats"]["rankScore"]["metadata"]["iconUrl"]
+                score = data["data"]["segments"][0]["stats"]["rankScore"]["displayValue"]
+                trackerLink = "https://apex.tracker.gg/profile/{pf}/{user}".format(pf=plat,user=name)
+                if int(level) > 500:
+                    level = 500
+            except Exception as e:
+                print(e,"parse section")
+                await ctx.send("`The player was not found`")
         
             playerEmbed = discord.Embed(title = "{}".format(name), url = trackerLink)
             playerEmbed.set_author(name = "Apex Legends",icon_url = "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Apex_legends_cover.jpg/220px-Apex_legends_cover.jpg")
@@ -83,6 +87,7 @@ class Apex(commands.Cog):
                 playerEmbed.set_thumbnail(url = rankIcon)
                 playerEmbed.set_image(url = "https://cdn1.dotesports.com/wp-content/uploads/2019/03/11133753/cropped-apex-embed-about-legends.png")
                 playerEmbed.color=discord.Colour.red()
+                await ctx.send("You can check any of the following legend infos. Use w!apex [platform] [player] [legend name]",embed = playerEmbed)
 
             
             else:
@@ -105,8 +110,9 @@ class Apex(commands.Cog):
                 playerEmbed.set_thumbnail(url = rankIcon)
                 playerEmbed.set_image(url = img)
                 playerEmbed.color=discord.Colour.green()
+                await ctx.send(embed = playerEmbed)
 
-            await ctx.send(embed = playerEmbed) 
+             
         
         except Exception as e:
             print(e,"In the body")
