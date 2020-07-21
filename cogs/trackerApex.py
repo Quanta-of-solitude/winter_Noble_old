@@ -110,7 +110,7 @@ class Apex(commands.Cog):
         
         except Exception as e:
             print(e,"In the body")
-            await ctx.send(f"`{e}`")
+            await ctx.send("`The player was not found :(`")
 
 
 
