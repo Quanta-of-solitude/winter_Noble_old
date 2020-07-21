@@ -70,7 +70,7 @@ class Utility(commands.Cog):
         em.set_author(name = "Help Menu",url = "https://winter-song-web.herokuapp.com/" ,icon_url = "http://bestanimations.com/Nature/winter/winter-snow-nature-animated-gif-27.gif")
         em.add_field(name = "1.General:", value = general_commands,inline = False)
         em.add_field(name = "2.Moderation: ", value = moderation_commands ,inline = False)
-        em.add_field(name = "3.AE: ", value = "**__NOTE__**: If you can't view the full char page in mobile using `w!char` use `w!mchar` and Mobile users use `w!mtitles` for titles list instead of `w!aq3dtitles`\n\n"+aq_commands ,inline = False)
+        em.add_field(name = "3.AE: ", value = aq_commands ,inline = False)
         #em.add_field(name = "4.Other Games: ", value = other_games ,inline = False)
         #em.add_field(name = "5.Music ", value = music_command ,inline = False)
         em.add_field(name = "4.Apex Legends:", value = apex_command, inline = False)
