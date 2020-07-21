@@ -103,7 +103,7 @@ class mmorpg(commands.Cog):
                 character_embed.set_author(name = "Character Info:",icon_url = "https://www.aq3d.com/media/1322/aq3d-dragonheadlogo.png" )
                 character_embed.add_field(name = "**Class:**", value = player_class, inline = True)
                 character_embed.add_field(name = "**__Badges__**", value = player_badges, inline = False)
-                character_embed.set_footer(text = "|Char-Page, w!mchar for mobile friendly|",icon_url = self.bot.user.avatar_url)
+                character_embed.set_footer(text = "|Char-Page|",icon_url = self.bot.user.avatar_url)
                 character_embed.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
                 character_embed.set_image(url = "{}".format(info['clpic']))
                 character_embed.color=discord.Colour.red()
@@ -116,13 +116,13 @@ class mmorpg(commands.Cog):
                         em = discord.Embed(color= 0000, description = page)
                         em.set_image(url = "{}".format(info['clpic']))
                         em.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
-                        em.set_footer(text = "|Char-Page, w!mchar for mobile friendly.|",icon_url = self.bot.user.avatar_url)
+                        em.set_footer(text = "|Char-Page|",icon_url = self.bot.user.avatar_url)
                         out = await ctx.send(embed = em)
                         break
                     em = discord.Embed(color = 0000, description = page)
                     em.set_image(url = "{}".format(info['clpic']))
                     em.set_thumbnail(url = "https://image.ibb.co/bTDven/logo_aq3d.png")
-                    em.set_footer(text = "|Char-Page, w!mchar for mobile friendly|",icon_url = self.bot.user.avatar_url)
+                    em.set_footer(text = "|Char-Page|",icon_url = self.bot.user.avatar_url)
                     await ctx.send(embed = em)
 
             del player[:]
