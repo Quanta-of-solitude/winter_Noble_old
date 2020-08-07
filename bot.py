@@ -78,8 +78,8 @@ class NewBot(commands.Bot):
     async def on_ready(self):
         '''SET THE UPTIME'''
         self.uptime = datetime.datetime.utcnow()
-        #+str(len(self.guilds))+ ,_ count broken placeholder 626
-        await self.change_presence(activity = discord.Game(name="w!help | [626] | update: Apex"))
+        #+str(len(self.guilds))+ ,_ count broken placeholder 670
+        await self.change_presence(activity = discord.Game(name="w!help | [670] | update: Apex | Broken fixes soon.."))
 
     async def on_command(self, ctx):
         cmd = ctx.command.qualified_name.replace(' ', '_')
